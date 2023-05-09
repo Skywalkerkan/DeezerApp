@@ -13,6 +13,19 @@
 		DE086CB02A0A4867005D3623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE086CAE2A0A4867005D3623 /* Main.storyboard */; };
 		DE086CB22A0A4868005D3623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE086CB12A0A4868005D3623 /* Assets.xcassets */; };
 		DE086CB52A0A4868005D3623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE086CB32A0A4868005D3623 /* LaunchScreen.storyboard */; };
+		DE086CC02A0A496C005D3623 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DE086CBF2A0A496C005D3623 /* Alamofire */; };
+		DE086CC22A0A4993005D3623 /* ApiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CC12A0A4993005D3623 /* ApiNetwork.swift */; };
+		DE086CC42A0A49AB005D3623 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CC32A0A49AB005D3623 /* GenreModel.swift */; };
+		DE086CC62A0A7D55005D3623 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CC52A0A7D55005D3623 /* NetworkErrors.swift */; };
+		DE086CCA2A0A87CE005D3623 /* ArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CC92A0A87CE005D3623 /* ArtistModel.swift */; };
+		DE086CCC2A0A8E76005D3623 /* NetworkPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CCB2A0A8E76005D3623 /* NetworkPaths.swift */; };
+		DE086CCF2A0AAE60005D3623 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CCE2A0AAE60005D3623 /* GenreListView.swift */; };
+		DE086CD12A0AAE95005D3623 /* GenreListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CD02A0AAE95005D3623 /* GenreListViewViewModel.swift */; };
+		DE086CD42A0AB09A005D3623 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CD32A0AB09A005D3623 /* AnchorExtension.swift */; };
+		DE086CD62A0AD1B9005D3623 /* AddSubviews+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CD52A0AD1B9005D3623 /* AddSubviews+Extension.swift */; };
+		DE086CD82A0AE427005D3623 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CD72A0AE427005D3623 /* GenreCollectionViewCell.swift */; };
+		DE086CDA2A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CD92A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift */; };
+		DE086CDC2A0AFDA4005D3623 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDB2A0AFDA4005D3623 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +37,18 @@
 		DE086CB12A0A4868005D3623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE086CB42A0A4868005D3623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE086CB62A0A4868005D3623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE086CC12A0A4993005D3623 /* ApiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetwork.swift; sourceTree = "<group>"; };
+		DE086CC32A0A49AB005D3623 /* GenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModel.swift; sourceTree = "<group>"; };
+		DE086CC52A0A7D55005D3623 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		DE086CC92A0A87CE005D3623 /* ArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistModel.swift; sourceTree = "<group>"; };
+		DE086CCB2A0A8E76005D3623 /* NetworkPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPaths.swift; sourceTree = "<group>"; };
+		DE086CCE2A0AAE60005D3623 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
+		DE086CD02A0AAE95005D3623 /* GenreListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListViewViewModel.swift; sourceTree = "<group>"; };
+		DE086CD32A0AB09A005D3623 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
+		DE086CD52A0AD1B9005D3623 /* AddSubviews+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubviews+Extension.swift"; sourceTree = "<group>"; };
+		DE086CD72A0AE427005D3623 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE086CD92A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		DE086CDB2A0AFDA4005D3623 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE086CC02A0A496C005D3623 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +82,75 @@
 		DE086CA72A0A4867005D3623 /* DeezerApp */ = {
 			isa = PBXGroup;
 			children = (
+				DE086CD22A0AB08A005D3623 /* Extensions */,
+				DE086CBD2A0A487C005D3623 /* Network */,
+				DE086CC82A0A861C005D3623 /* Controller */,
+				DE086CCD2A0AAE3C005D3623 /* ViewModel */,
+				DE086CC72A0A8616005D3623 /* View */,
+				DE086CBC2A0A4877005D3623 /* Model */,
 				DE086CA82A0A4867005D3623 /* AppDelegate.swift */,
 				DE086CAA2A0A4867005D3623 /* SceneDelegate.swift */,
-				DE086CAC2A0A4867005D3623 /* ViewController.swift */,
 				DE086CAE2A0A4867005D3623 /* Main.storyboard */,
 				DE086CB12A0A4868005D3623 /* Assets.xcassets */,
 				DE086CB32A0A4868005D3623 /* LaunchScreen.storyboard */,
 				DE086CB62A0A4868005D3623 /* Info.plist */,
 			);
 			path = DeezerApp;
+			sourceTree = "<group>";
+		};
+		DE086CBC2A0A4877005D3623 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CC32A0A49AB005D3623 /* GenreModel.swift */,
+				DE086CC92A0A87CE005D3623 /* ArtistModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE086CBD2A0A487C005D3623 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CC12A0A4993005D3623 /* ApiNetwork.swift */,
+				DE086CC52A0A7D55005D3623 /* NetworkErrors.swift */,
+				DE086CCB2A0A8E76005D3623 /* NetworkPaths.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DE086CC72A0A8616005D3623 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CCE2A0AAE60005D3623 /* GenreListView.swift */,
+				DE086CD72A0AE427005D3623 /* GenreCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE086CC82A0A861C005D3623 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CAC2A0A4867005D3623 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE086CCD2A0AAE3C005D3623 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CD02A0AAE95005D3623 /* GenreListViewViewModel.swift */,
+				DE086CD92A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift */,
+				DE086CDB2A0AFDA4005D3623 /* File.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DE086CD22A0AB08A005D3623 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE086CD32A0AB09A005D3623 /* AnchorExtension.swift */,
+				DE086CD52A0AD1B9005D3623 /* AddSubviews+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +169,9 @@
 			dependencies = (
 			);
 			name = DeezerApp;
+			packageProductDependencies = (
+				DE086CBF2A0A496C005D3623 /* Alamofire */,
+			);
 			productName = DeezerApp;
 			productReference = DE086CA52A0A4867005D3623 /* DeezerApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +200,9 @@
 				Base,
 			);
 			mainGroup = DE086C9C2A0A4867005D3623;
+			packageReferences = (
+				DE086CBE2A0A496C005D3623 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = DE086CA62A0A4867005D3623 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +231,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE086CAD2A0A4867005D3623 /* ViewController.swift in Sources */,
+				DE086CC42A0A49AB005D3623 /* GenreModel.swift in Sources */,
+				DE086CCA2A0A87CE005D3623 /* ArtistModel.swift in Sources */,
+				DE086CDA2A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift in Sources */,
+				DE086CD12A0AAE95005D3623 /* GenreListViewViewModel.swift in Sources */,
 				DE086CA92A0A4867005D3623 /* AppDelegate.swift in Sources */,
+				DE086CCF2A0AAE60005D3623 /* GenreListView.swift in Sources */,
 				DE086CAB2A0A4867005D3623 /* SceneDelegate.swift in Sources */,
+				DE086CC22A0A4993005D3623 /* ApiNetwork.swift in Sources */,
+				DE086CD42A0AB09A005D3623 /* AnchorExtension.swift in Sources */,
+				DE086CDC2A0AFDA4005D3623 /* File.swift in Sources */,
+				DE086CC62A0A7D55005D3623 /* NetworkErrors.swift in Sources */,
+				DE086CCC2A0A8E76005D3623 /* NetworkPaths.swift in Sources */,
+				DE086CD82A0AE427005D3623 /* GenreCollectionViewCell.swift in Sources */,
+				DE086CD62A0AD1B9005D3623 /* AddSubviews+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +462,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE086CBE2A0A496C005D3623 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE086CBF2A0A496C005D3623 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE086CBE2A0A496C005D3623 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE086C9D2A0A4867005D3623 /* Project object */;
 }
