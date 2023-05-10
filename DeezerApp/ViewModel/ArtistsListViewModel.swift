@@ -49,39 +49,44 @@ final class ArtistsListViewModel: NSObject{
         
     }
     
-    var genrecik: Int = 0
+  /*  var genrecik: Int = 0
     
     
     var genreID: Int = 0{
         didSet{
             
-           //print(genreID)
+         //  print(genreID)
            
             
-            genrecik = genreID
-            print("genreID VAR \(genreID)")
+            
             
             //self.delegate?.didLoadInitialArtist()
             
-            //fetchArtists(genreID: genreID)
             
+          
             
             
         }
-    }
+    }*/
+
     
     private var cellViewModels: [ArtistCollectionViewCellViewModel] = []
     
     
     
     func fetchArtists(genreID: Int){
+        
+       // print(self.genreID)
         APICaller.shared.fetchArtists(genreID: genreID) { result in
+          //  print(self.genreID)
             switch result{
             case .success(let artists):
                 //print(artists)
-             
+                print(artists.data.first?.name)
                 self.allArtists = artists.data
                 self.delegate?.didLoadInitialArtist()
+               
+
             //    print(self.allArtists)
             case .failure(let error):
                 print(error)
@@ -91,6 +96,9 @@ final class ArtistsListViewModel: NSObject{
         
         
     }
+    
+    
+
     
     
 

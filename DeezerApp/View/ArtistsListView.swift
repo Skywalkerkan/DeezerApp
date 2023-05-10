@@ -13,6 +13,15 @@ final class ArtistsListView: UIView{
 
     private let viewModel = ArtistsListViewModel()
     
+    
+    var byIDArtist: Int = 0{
+        didSet{
+            print(byIDArtist)
+            print("Yukardaki")
+            viewModel.fetchArtists(genreID: byIDArtist)
+        }
+    }
+    
     private let collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -32,8 +41,9 @@ final class ArtistsListView: UIView{
         collectionViewSetup()
         
         //print(viewModel.genrecik)
-        
-        viewModel.fetchArtists(genreID: viewModel.genreID)
+     //   print("listView\(viewModel.genrecik)")
+       // viewModel.fetchArtists()
+       
         
         
         

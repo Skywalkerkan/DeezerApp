@@ -31,8 +31,10 @@ class ArtistsViewController: UIViewController {
         
         
         view.addSubview(ArtistListView)
+       // print(id)
+  
+        ArtistListView.byIDArtist = id
         
-        artistViewModel.genreID = id
         
         ArtistListView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
