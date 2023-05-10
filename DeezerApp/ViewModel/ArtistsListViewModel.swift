@@ -21,7 +21,7 @@ import UIKit
 protocol AritsViewModelDelegate: AnyObject {
     func didLoadInitialArtist()
     
-  //  func didSelectGenre(genre: Int)
+    func didSelectArtist(artist: SingleArtist)
         
 }
 
@@ -77,14 +77,17 @@ final class ArtistsListViewModel: NSObject{
     func fetchArtists(genreID: Int){
         
        // print(self.genreID)
-        APICaller.shared.fetchArtists(genreID: genreID) { result in
+        APICaller.shared.fetchArtists(genreID: genreID) { [weak self] result in
           //  print(self.genreID)
             switch result{
             case .success(let artists):
                 //print(artists)
                 print(artists.data.first?.name)
-                self.allArtists = artists.data
-                self.delegate?.didLoadInitialArtist()
+                self?.allArtists = artists.data
+                DispatchQueue.main.async {
+                    self?.delegate?.didLoadInitialArtist()
+                }
+               
                
 
             //    print(self.allArtists)
@@ -139,7 +142,13 @@ extension ArtistsListViewModel: UICollectionViewDataSource,UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = allArtists[indexPath.row]
+        print(selectedItem.name)
+        delegate?.didSelectArtist(artist: selectedItem)
     }
     
     

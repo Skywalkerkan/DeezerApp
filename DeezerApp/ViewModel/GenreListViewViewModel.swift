@@ -94,8 +94,11 @@ extension GenreViewModel: UICollectionViewDataSource, UICollectionViewDelegate, 
             fatalError("Wrong or Unsupported Cell")
         }
         let viewModel = cellViewModels[indexPath.row]
-        cell.backgroundColor = .blue
+      //  cell.backgroundColor = .blue
         cell.configure(viewModel: viewModel)
+        
+        
+        
         return cell
     }
     

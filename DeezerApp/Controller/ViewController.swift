@@ -68,6 +68,7 @@ class ViewController: UIViewController, GenreListViewDelegate {
         //print(genreID)
         let VC = ArtistsViewController()
         VC.id = genreID
+        
         self.navigationController?.pushViewController(VC, animated: true)
     }
 

@@ -102,6 +102,41 @@ class APICaller{
     }
     
     
+    func fetchAlbums(artistID: Int, completion: @escaping (Result<Albums, NetworkError>) -> Void){
+        
+        let urlString = baseURL + UrlPath.artist.rawValue + "\(artistID)" + UrlPath.albums.rawValue
+        
+        
+        guard let url = URL(string: urlString) else{
+            completion(.failure(.invalidUrl))
+            return
+            
+        }
+        
+        print(url)
+        AF.request(url).validate().responseDecodable(of: Albums.self){ response in
+            
+            switch response.result{
+            case .success(let data):
+                completion(.success(data))
+                
+            case .failure(let error):
+                print(error)
+                completion(.failure(NetworkError.invalidResponse))
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    
+
+    
+    
+    
+    
     
     
     

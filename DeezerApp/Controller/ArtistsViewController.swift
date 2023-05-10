@@ -12,7 +12,9 @@ import UIKit
 
 
 
-class ArtistsViewController: UIViewController {
+class ArtistsViewController: UIViewController, ArtistsListViewDelegate {
+
+    
  
     
 
@@ -25,7 +27,7 @@ class ArtistsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        ArtistListView.delegate = self
         
         
         
@@ -45,6 +47,14 @@ class ArtistsViewController: UIViewController {
         
     }
     
+    
+    func listViewArtists(artistView genreView: ArtistsListView, artist: SingleArtist) {
+        let VC = SingleArtistViewController()
+        VC.id = artist.id
+        print(artist.name)
+        VC.title = artist.name
+        navigationController?.pushViewController(VC, animated: true)
+    }
 
  
 

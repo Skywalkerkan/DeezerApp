@@ -9,10 +9,16 @@ import Foundation
 import UIKit
 
 
+
+protocol ArtistsListViewDelegate: AnyObject{
+    
+    func listViewArtists(artistView: ArtistsListView, artist: SingleArtist)
+}
+
 final class ArtistsListView: UIView{
 
     private let viewModel = ArtistsListViewModel()
-    
+    public weak var delegate: ArtistsListViewDelegate?
     
     var byIDArtist: Int = 0{
         didSet{
@@ -88,6 +94,10 @@ final class ArtistsListView: UIView{
 
 
 extension ArtistsListView: AritsViewModelDelegate{
+    func didSelectArtist(artist: SingleArtist) {
+        delegate?.listViewArtists(artistView: self, artist: artist)
+    }
+    
     func didLoadInitialArtist() {
         collectionView.reloadData()
     }
