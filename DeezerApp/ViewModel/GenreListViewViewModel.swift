@@ -12,7 +12,9 @@ import UIKit
 
 
 protocol GenreViewModelDelegate: AnyObject {
-    func didLoadInitialValue()
+    func didLoadInitialGenre()
+    
+    func didSelectGenre(genre: Int)
         
 }
 
@@ -32,7 +34,7 @@ final class GenreViewModel: NSObject{
                     return
                 }
               //  print(imageURL)
-                let viewModel = GenreCollectionViewCellViewModel(genreName: genres.name, genreImageURL: imageURL)
+                let viewModel = GenreCollectionViewCellViewModel(genreName: genres.name, genreImageURL: imageURL, genreID: genres.id)
                 cellViewModels.append(viewModel)
                 
             }
@@ -53,7 +55,7 @@ final class GenreViewModel: NSObject{
                     self?.allGenres = GenreData.data
                    // print(self?.allGenres)
                 DispatchQueue.main.async {
-                    self?.delegate?.didLoadInitialValue()
+                    self?.delegate?.didLoadInitialGenre()
                 }
                 
             case .failure(let error):
@@ -62,6 +64,26 @@ final class GenreViewModel: NSObject{
         }
 
     }
+    
+   /* func fetchArtists(genreID: Int){
+        APICaller.shared.fetchArtists(genreID: genreID) { result in
+            switch result{
+            case .success(let artists):
+                print(artists)
+               // self.allArtists = artists.data
+                print("giiiiriiş")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
+        
+    }*/
+
+    
+    
+    
 
 }
 
@@ -79,6 +101,16 @@ extension GenreViewModel: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellViewModels.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedGenre = cellViewModels[indexPath.row].genreID
+        
+        
+        delegate?.didSelectGenre(genre: selectedGenre)
+        
+ 
+        //ArtistsListViewmo
     }
     
     

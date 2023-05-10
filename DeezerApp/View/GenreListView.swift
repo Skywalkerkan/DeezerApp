@@ -8,9 +8,18 @@
 import Foundation
 import UIKit
 
+protocol GenreListViewDelegate: AnyObject{
+    
+    func listViewGenre(genreView: GenreListView, genreID: Int)
+}
+
+
 
 
 final class GenreListView: UIView{
+    
+    
+    public weak var delegate: GenreListViewDelegate?
     
     private let viewModel = GenreViewModel()
     
@@ -24,6 +33,9 @@ final class GenreListView: UIView{
         print("gir")
         return spinner
     }()
+    
+    
+    
     
     private let collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -107,7 +119,11 @@ final class GenreListView: UIView{
 
 
 extension GenreListView: GenreViewModelDelegate{
-    func didLoadInitialValue() {
+    func didSelectGenre(genre: Int) {
+        delegate?.listViewGenre(genreView: self, genreID: genre)
+    }
+    
+    func didLoadInitialGenre() {
         collectionView.reloadData()
     }
     

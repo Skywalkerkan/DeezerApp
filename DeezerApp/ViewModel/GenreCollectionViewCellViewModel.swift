@@ -16,12 +16,13 @@ final class GenreCollectionViewCellViewModel{
     
     public let genreName: String
     private let genreImageURL: URL?
+    public let genreID: Int
     
-    init(genreName: String, genreImageURL: URL?){
+    init(genreName: String, genreImageURL: URL?, genreID: Int){
         
         self.genreName = genreName
         self.genreImageURL = genreImageURL
-        
+        self.genreID = genreID
         
         
     }

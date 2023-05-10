@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GenreListViewDelegate {
+
+    
 
     
     private let genresListView = GenreListView()
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
        title = "Erkan"
+        genresListView.delegate = self
         view.addSubview(genresListView)
         genresListView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -56,14 +59,16 @@ class ViewController: UIViewController {
             }
         }*/
         
+    
         
-        
-        
-
-        
-        
-        
-        
+    }
+    
+    func listViewGenre(genreView: GenreListView, genreID: Int) {
+        //Detail
+        //print(genreID)
+        let VC = ArtistsViewController()
+        VC.id = genreID
+        self.navigationController?.pushViewController(VC, animated: true)
     }
 
 
