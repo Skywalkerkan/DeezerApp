@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class TrackCollectionViewCell: UICollectionViewCell {
     
@@ -55,25 +57,60 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     
     
+    let realm = try! Realm()
     
     
+    let myObject = ObjectTrack()
 
     
     @objc func begenClicked(){
+        
+        
         
         isFilled.toggle()
         var image = UIImage()
         /*let image = isFilled ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         tintColor = isFilled ? .systemPink : .systemGray*/
         
-        if isFilled{
+        
+        
+        
+        if isFilled {
             image = UIImage(systemName: "heart.fill")!
+            print(trackID)
+            
+            guard let trackID = trackID else {
+                return
+            }
+            print("ekle")
+            
+            let newObject = ObjectTrack()
+            newObject.trackID = trackID
+            
+            try! realm.write {
+                realm.add(newObject)
+            }
+
             tintColor = .systemPink
-        }
-        else{
+        } else {
             image = UIImage(systemName: "heart")!
+            
+            guard let trackID = trackID else {
+                return
+            }
+            
+            let objectsToDelete = realm.objects(ObjectTrack.self).filter("trackID == %@", trackID)
+            
+            try! realm.write {
+                realm.delete(objectsToDelete)
+            }
+           
+            print("Sil")
+            
             tintColor = .systemGray
         }
+        
+
         
         
         heartButton.setBackgroundImage(image, for: .normal)
@@ -93,7 +130,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackName.anchor(top: contentView.topAnchor, bottom: nil, leading: trackImage.trailingAnchor, trailing: heartButton.leadingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 15, paddingRight: 0, width: 0, height: 30)
         trackTime.anchor(top: trackName.bottomAnchor, bottom: contentView.bottomAnchor, leading: trackImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingLeft: 5, paddingRight: 0, width: 0, height: 0)
         
-        
+        print(trackID)
+  
         
     }
     
@@ -106,6 +144,13 @@ class TrackCollectionViewCell: UICollectionViewCell {
     func configure(viewModel: TrackCollectionCellViewModel){
         trackName.text = viewModel.trackName
         trackTime.text = "\(viewModel.trackDuration)"
+        trackID = viewModel.trackID
+        
+        if let object = realm.objects(ObjectTrack.self).filter("trackID == %@", viewModel.trackID).first {
+            print(object)
+            print("evet var")
+            heartButton
+        }
         
         viewModel.fetchImage { [weak self] result in
             switch result{

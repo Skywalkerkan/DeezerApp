@@ -22,7 +22,8 @@ struct Tracks: Codable {
 struct TrackData: Codable {
     let id: Int
     let readable: Bool
-    let title, titleShort, titleVersion, isrc: String
+    let title, titleShort, isrc: String
+    let titleVersion: String?
     let link: String
     let duration, trackPosition, diskNumber, rank: Int
     let explicitLyrics: Bool

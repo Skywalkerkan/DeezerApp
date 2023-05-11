@@ -34,6 +34,9 @@
 		DE87E4802A0CEF5D00328B9F /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */; };
 		DE87E4822A0CFF2500328B9F /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4812A0CFF2500328B9F /* TrackModel.swift */; };
 		DE87E4842A0D086B00328B9F /* TrackCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */; };
+		DE87E48B2A0D250E00328B9F /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E48A2A0D250E00328B9F /* RealmTrackModel.swift */; };
+		DE87E48E2A0D2F0A00328B9F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE87E48D2A0D2F0A00328B9F /* Realm */; };
+		DE87E4902A0D2F0A00328B9F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE87E48F2A0D2F0A00328B9F /* RealmSwift */; };
 		DEFA1A4D2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */; };
 		DEFA1A4F2A0BCD5B0068998C /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */; };
 		DEFA1A512A0BF7190068998C /* SingleArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */; };
@@ -73,6 +76,7 @@
 		DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE87E4812A0CFF2500328B9F /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		DE87E48A2A0D250E00328B9F /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
 		DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleArtistViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE87E4902A0D2F0A00328B9F /* RealmSwift in Frameworks */,
+				DE87E48E2A0D2F0A00328B9F /* Realm in Frameworks */,
 				DE086CC02A0A496C005D3623 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +143,7 @@
 				DE086CC92A0A87CE005D3623 /* ArtistModel.swift */,
 				DEFA1A582A0C330C0068998C /* AlbumModel.swift */,
 				DE87E4812A0CFF2500328B9F /* TrackModel.swift */,
+				DE87E48A2A0D250E00328B9F /* RealmTrackModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +226,8 @@
 			name = DeezerApp;
 			packageProductDependencies = (
 				DE086CBF2A0A496C005D3623 /* Alamofire */,
+				DE87E48D2A0D2F0A00328B9F /* Realm */,
+				DE87E48F2A0D2F0A00328B9F /* RealmSwift */,
 			);
 			productName = DeezerApp;
 			productReference = DE086CA52A0A4867005D3623 /* DeezerApp.app */;
@@ -250,6 +259,7 @@
 			mainGroup = DE086C9C2A0A4867005D3623;
 			packageReferences = (
 				DE086CBE2A0A496C005D3623 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DE87E48C2A0D2F0A00328B9F /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = DE086CA62A0A4867005D3623 /* Products */;
 			projectDirPath = "";
@@ -285,6 +295,7 @@
 				DE086CDA2A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift in Sources */,
 				DE086CD12A0AAE95005D3623 /* GenreListViewViewModel.swift in Sources */,
 				DE086CE02A0AFF29005D3623 /* ArtistsListView.swift in Sources */,
+				DE87E48B2A0D250E00328B9F /* RealmTrackModel.swift in Sources */,
 				DEFA1A512A0BF7190068998C /* SingleArtistViewController.swift in Sources */,
 				DEFA1A552A0C1B5C0068998C /* SingleArtistViewModel.swift in Sources */,
 				DE086CA92A0A4867005D3623 /* AppDelegate.swift in Sources */,
@@ -538,6 +549,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DE87E48C2A0D2F0A00328B9F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -545,6 +564,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE086CBE2A0A496C005D3623 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		DE87E48D2A0D2F0A00328B9F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE87E48C2A0D2F0A00328B9F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		DE87E48F2A0D2F0A00328B9F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE87E48C2A0D2F0A00328B9F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
