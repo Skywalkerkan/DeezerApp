@@ -37,6 +37,9 @@
 		DE87E48B2A0D250E00328B9F /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E48A2A0D250E00328B9F /* RealmTrackModel.swift */; };
 		DE87E48E2A0D2F0A00328B9F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE87E48D2A0D2F0A00328B9F /* Realm */; };
 		DE87E4902A0D2F0A00328B9F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE87E48F2A0D2F0A00328B9F /* RealmSwift */; };
+		DE87E4922A0D3B7A00328B9F /* BegenilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4912A0D3B7A00328B9F /* BegenilerViewController.swift */; };
+		DE87E4942A0D3FDD00328B9F /* BegenilerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4932A0D3FDD00328B9F /* BegenilerListView.swift */; };
+		DE87E4962A0D405100328B9F /* BegeniListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4952A0D405100328B9F /* BegeniListViewModel.swift */; };
 		DEFA1A4D2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */; };
 		DEFA1A4F2A0BCD5B0068998C /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */; };
 		DEFA1A512A0BF7190068998C /* SingleArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */; };
@@ -77,6 +80,9 @@
 		DE87E4812A0CFF2500328B9F /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		DE87E48A2A0D250E00328B9F /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
+		DE87E4912A0D3B7A00328B9F /* BegenilerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegenilerViewController.swift; sourceTree = "<group>"; };
+		DE87E4932A0D3FDD00328B9F /* BegenilerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegenilerListView.swift; sourceTree = "<group>"; };
+		DE87E4952A0D405100328B9F /* BegeniListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegeniListViewModel.swift; sourceTree = "<group>"; };
 		DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleArtistViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 				DEFA1A562A0C2C230068998C /* SingleArtistCollectionViewCell.swift */,
 				DE87E47B2A0CEC7400328B9F /* TrackListView.swift */,
 				DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */,
+				DE87E4932A0D3FDD00328B9F /* BegenilerListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +187,7 @@
 				DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */,
 				DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */,
 				DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */,
+				DE87E4912A0D3B7A00328B9F /* BegenilerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 				DEFA1A5A2A0C3F5E0068998C /* SingleCollectionCellViewModel.swift */,
 				DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */,
 				DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */,
+				DE87E4952A0D405100328B9F /* BegeniListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,7 +298,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE87E47E2A0CED2600328B9F /* TrackListViewModel.swift in Sources */,
+				DE87E4962A0D405100328B9F /* BegeniListViewModel.swift in Sources */,
 				DE086CAD2A0A4867005D3623 /* ViewController.swift in Sources */,
+				DE87E4922A0D3B7A00328B9F /* BegenilerViewController.swift in Sources */,
 				DE086CC42A0A49AB005D3623 /* GenreModel.swift in Sources */,
 				DE086CCA2A0A87CE005D3623 /* ArtistModel.swift in Sources */,
 				DE086CDA2A0AE542005D3623 /* GenreCollectionViewCellViewModel.swift in Sources */,
@@ -317,6 +328,7 @@
 				DE086CCC2A0A8E76005D3623 /* NetworkPaths.swift in Sources */,
 				DE086CD82A0AE427005D3623 /* GenreCollectionViewCell.swift in Sources */,
 				DEFA1A572A0C2C240068998C /* SingleArtistCollectionViewCell.swift in Sources */,
+				DE87E4942A0D3FDD00328B9F /* BegenilerListView.swift in Sources */,
 				DE87E4842A0D086B00328B9F /* TrackCollectionCellViewModel.swift in Sources */,
 				DE086CD62A0AD1B9005D3623 /* AddSubviews+Extension.swift in Sources */,
 				DE086CDE2A0AFF17005D3623 /* ArtistsViewController.swift in Sources */,

@@ -15,5 +15,7 @@ enum UrlPath: String{
     case artist = "/artist/"
     case album = "/album"
     case albums = "/albums"
-    case track = "/tracks"
+    case tracks = "/tracks"
+    case track = "/track"
+    
 }

@@ -61,14 +61,14 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     
     let myObject = ObjectTrack()
-
+    var image = UIImage()
     
     @objc func begenClicked(){
         
-        
+        print("begeni basidli")
         
         isFilled.toggle()
-        var image = UIImage()
+        
         /*let image = isFilled ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         tintColor = isFilled ? .systemPink : .systemGray*/
         
@@ -90,6 +90,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
             try! realm.write {
                 realm.add(newObject)
             }
+            
 
             tintColor = .systemPink
         } else {
@@ -122,7 +123,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        let realm = try! Realm()
         contentView.addSubviews(views: trackImage, trackName, trackTime,heartButton)
         
         trackImage.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 100, height: 0)
@@ -131,7 +132,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackTime.anchor(top: trackName.bottomAnchor, bottom: contentView.bottomAnchor, leading: trackImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingLeft: 5, paddingRight: 0, width: 0, height: 0)
         
         print(trackID)
-  
+    
         
     }
     
@@ -147,9 +148,13 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackID = viewModel.trackID
         
         if let object = realm.objects(ObjectTrack.self).filter("trackID == %@", viewModel.trackID).first {
+            isFilled.toggle()
             print(object)
             print("evet var")
-            heartButton
+            image = UIImage(systemName: "heart.fill")!
+            tintColor = .systemPink
+            heartButton.setBackgroundImage(image, for: .normal)
+           // isFilled.toggle()
         }
         
         viewModel.fetchImage { [weak self] result in
@@ -169,3 +174,10 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     
 }
+
+
+
+
+
+
+

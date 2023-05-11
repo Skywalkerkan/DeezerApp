@@ -1,5 +1,5 @@
 //
-//  TrackListView.swift
+//  BegenilerListView.swift
 //  DeezerApp
 //
 //  Created by Erkan on 11.05.2023.
@@ -10,30 +10,19 @@ import UIKit
 import RealmSwift
 
 
-protocol TrackListViewDelegate: AnyObject{
+protocol BegeniListViewDelegate: AnyObject{
     
-    func listViewTrack(trackView: TrackListView, track: TrackData)
+    func listViewTrack(trackView: BegeniListView, track: TrackData)
 }
 
 
-let realm = try! Realm()
 
-
-
-final class TrackListView: UIView{
+final class BegeniListView: UIView{
     
-    private let viewModel = TrackListViewModel()
-    public weak var delegate: TrackListViewDelegate?
+    private let viewModel = BegeniListViewModel()
+    public weak var delegate: BegeniListViewDelegate?
     
-    var byTrackID: Int = 0{
-        didSet{
-            print(byTrackID)
-            print("TRACKID")
-            
-            viewModel.fetchAllTracks(albumID: byTrackID)
-            
-        }
-    }
+
     
     
     
@@ -46,21 +35,52 @@ final class TrackListView: UIView{
     }()
     
     
+    var trackIDS: [Int] = []{
+        
+        didSet{
+            DispatchQueue.main.async {
+                self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
+                print("sonu")
+            }
+        }
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        collectionView.backgroundColor = .red
+        print("Napıyon")
         let objects = realm.objects(ObjectTrack.self)
 
-        /*for object in objects {
-            print(object.trackID)
+        for object in objects {
+           // print(object.trackID)
+            trackIDS.append(object.trackID)
+
+
+            guard let lastObject = objects.last else{
+                return
+            }
+          //  print(lastObject.trackID)
+          //  print(object.trackID)
+            if lastObject.trackID == object.trackID{
+                print("gihopppaarildi")
+                print(trackIDS)
+                
+                self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
+            }
+          //  print("devamke")
             // veya print(object) şeklinde tüm objeyi yazdırabilirsiniz.
         }
-        */
+        
+        
         translatesAutoresizingMaskIntoConstraints = false
+
+
         
         viewModel.delegate = self
         addSubview(collectionView)
+        backgroundColor = .cyan
         
         collectionView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -88,7 +108,7 @@ final class TrackListView: UIView{
 }
 
 
-extension TrackListView: TrackListViewModelDelegate{
+extension BegeniListView: BegeniListViewModelDelegate{
     func didSelectTrack(track: TrackData) {
         delegate?.listViewTrack(trackView: self, track: track)
     }

@@ -132,7 +132,7 @@ class APICaller{
     
     func fetchTracks(albumID: Int, completion: @escaping (Result<Tracks, NetworkError>) -> Void){
         
-        let urlString = baseURL + UrlPath.album.rawValue + "/\(albumID)" + UrlPath.track.rawValue
+        let urlString = baseURL + UrlPath.album.rawValue + "/\(albumID)" + UrlPath.tracks.rawValue
         
         
         guard let url = URL(string: urlString) else{
@@ -154,6 +154,39 @@ class APICaller{
             }
             
         }
+        
+        
+    }
+    
+    
+    func fetchSingleTrack(trackID: [Int], completion: @escaping (Result<TrackData, NetworkError>) -> Void){
+        
+        trackID.forEach { trackID in
+            
+            let urlString = baseURL + UrlPath.track.rawValue + "/\(trackID)"
+            
+            
+            guard let url = URL(string: urlString) else{
+                completion(.failure(.invalidUrl))
+                return
+                
+            }
+            
+            print(url)
+            AF.request(url).validate().responseDecodable(of: TrackData.self){ response in
+                
+                switch response.result{
+                case .success(let data):
+                    completion(.success(data))
+                    
+                case .failure(let error):
+                    print(error)
+                    completion(.failure(NetworkError.invalidResponse))
+                }
+                
+            }
+        }
+   
         
         
     }
