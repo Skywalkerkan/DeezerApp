@@ -30,7 +30,7 @@ final class GenreViewModel: NSObject{
         
         didSet{
             for genres in allGenres{
-                guard let imageURL = URL(string: genres.picture) else{
+                guard let imageURL = URL(string: genres.picture_big) else{
                     return
                 }
               //  print(imageURL)

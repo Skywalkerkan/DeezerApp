@@ -35,7 +35,7 @@ final class ArtistsListViewModel: NSObject{
         
         didSet{
             for artist in allArtists{
-                guard let imageURL = URL(string: artist.picture) else{
+                guard let imageURL = URL(string: artist.pictureBig) else{
                     return
                 }
               //  print(imageURL)

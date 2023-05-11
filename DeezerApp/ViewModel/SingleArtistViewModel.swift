@@ -13,7 +13,7 @@ import UIKit
 protocol AlbumViewModelDelegate: AnyObject {
     func didLoadInitialArtist()
     
- //   func didSelectArtist(artist: Album)
+    func didSelectAlbum(album: Album)
         
 }
 
@@ -28,7 +28,7 @@ final class SingleArtistViewModel: NSObject{
         
         didSet{
             for album in albums{
-                guard let imageURL = URL(string: album.coverMedium) else{
+                guard let imageURL = URL(string: album.coverBig) else{
                     return
                 }
               //  print(imageURL)
@@ -50,7 +50,8 @@ final class SingleArtistViewModel: NSObject{
         APICaller.shared.fetchSingleArtist(artistID: artistID) { [weak self] result in
             switch result{
             case .success(let data):
-                print(data)
+              //  print(data)
+                print("fetchgirildi")
             case .failure(let error):
                 print(error)
                 
@@ -116,6 +117,11 @@ extension SingleArtistViewModel: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: -0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = self.albums[indexPath.row]
+        delegate?.didSelectAlbum(album: selectedItem)
     }
     
     

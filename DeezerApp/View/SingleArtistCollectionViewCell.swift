@@ -16,6 +16,8 @@ class SingleArtistCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .purple
+        imageView.backgroundColor = .secondarySystemBackground
+
         return imageView
     }()
     
@@ -49,7 +51,6 @@ class SingleArtistCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderWidth = 2
         
         
-        print("girdi")
         
         albumImage.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 100, height: 0)
         albumName.anchor(top: contentView.topAnchor, bottom: nil, leading: albumImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingLeft: 10, paddingRight: -5, width: 0, height: 0)

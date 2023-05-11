@@ -18,6 +18,8 @@ class GenreCollectionViewCell: UICollectionViewCell{
        let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .secondarySystemBackground
+
         return imageView
     }()
     

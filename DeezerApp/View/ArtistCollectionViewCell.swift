@@ -16,7 +16,7 @@ class ArtistCollectionViewCell: UICollectionViewCell {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
-        imageView.backgroundColor = .brown
+        imageView.backgroundColor = .secondarySystemBackground
         
         
         return imageView
@@ -41,6 +41,12 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         
         
         contentView.addSubviews(views: imageView, artistLabel)
+        
+        contentView.layer.cornerRadius = 20
+        contentView.layer.masksToBounds = true
+        contentView.layer.borderWidth = 3
+        contentView.layer.borderColor = UIColor.black.cgColor
+        contentView.clipsToBounds = true
         
         imageView.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         artistLabel.anchor(top: nil, bottom: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 50)

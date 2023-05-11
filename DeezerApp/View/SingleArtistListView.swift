@@ -10,7 +10,7 @@ import UIKit
 
 protocol AlbumListViewDelegate: AnyObject{
     
-    func listViewAlbum(artistView: SingleArtistListView, artist: Album)
+    func listViewAlbum(albumView: SingleArtistListView, album: Album)
 }
 
 
@@ -43,6 +43,7 @@ final class SingleArtistListView: UIView{
             print(byIDArtist)
             print("Yukardaki")
             viewModel.fetchSingleArtist(artistID: byIDArtist)
+            
         }
     }
     
@@ -96,6 +97,10 @@ final class SingleArtistListView: UIView{
 
 extension SingleArtistListView: AlbumViewModelDelegate{
   
+    func didSelectAlbum(album: Album) {
+        delegate?.listViewAlbum(albumView: self, album: album)
+    }
+    
     
     /*func didSelectArtist(artist: SingleArtist) {
         delegate?.listViewArtists(artistView: self, artist: artist)

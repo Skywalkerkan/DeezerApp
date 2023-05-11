@@ -28,6 +28,12 @@
 		DE086CDC2A0AFDA4005D3623 /* ArtistsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDB2A0AFDA4005D3623 /* ArtistsListViewModel.swift */; };
 		DE086CDE2A0AFF17005D3623 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */; };
 		DE086CE02A0AFF29005D3623 /* ArtistsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDF2A0AFF29005D3623 /* ArtistsListView.swift */; };
+		DE87E47A2A0CE7ED00328B9F /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */; };
+		DE87E47C2A0CEC7400328B9F /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47B2A0CEC7400328B9F /* TrackListView.swift */; };
+		DE87E47E2A0CED2600328B9F /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */; };
+		DE87E4802A0CEF5D00328B9F /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */; };
+		DE87E4822A0CFF2500328B9F /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4812A0CFF2500328B9F /* TrackModel.swift */; };
+		DE87E4842A0D086B00328B9F /* TrackCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */; };
 		DEFA1A4D2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */; };
 		DEFA1A4F2A0BCD5B0068998C /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */; };
 		DEFA1A512A0BF7190068998C /* SingleArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */; };
@@ -61,6 +67,12 @@
 		DE086CDB2A0AFDA4005D3623 /* ArtistsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsListViewModel.swift; sourceTree = "<group>"; };
 		DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsViewController.swift; sourceTree = "<group>"; };
 		DE086CDF2A0AFF29005D3623 /* ArtistsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsListView.swift; sourceTree = "<group>"; };
+		DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
+		DE87E47B2A0CEC7400328B9F /* TrackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
+		DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
+		DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE87E4812A0CFF2500328B9F /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleArtistViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +136,7 @@
 				DE086CC32A0A49AB005D3623 /* GenreModel.swift */,
 				DE086CC92A0A87CE005D3623 /* ArtistModel.swift */,
 				DEFA1A582A0C330C0068998C /* AlbumModel.swift */,
+				DE87E4812A0CFF2500328B9F /* TrackModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +160,8 @@
 				DEFA1A4E2A0BCD5B0068998C /* ArtistCollectionViewCell.swift */,
 				DEFA1A522A0C15C50068998C /* SingleArtistListView.swift */,
 				DEFA1A562A0C2C230068998C /* SingleArtistCollectionViewCell.swift */,
+				DE87E47B2A0CEC7400328B9F /* TrackListView.swift */,
+				DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,6 +172,7 @@
 				DE086CAC2A0A4867005D3623 /* ViewController.swift */,
 				DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */,
 				DEFA1A502A0BF7190068998C /* SingleArtistViewController.swift */,
+				DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +186,8 @@
 				DEFA1A4C2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift */,
 				DEFA1A542A0C1B5C0068998C /* SingleArtistViewModel.swift */,
 				DEFA1A5A2A0C3F5E0068998C /* SingleCollectionCellViewModel.swift */,
+				DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */,
+				DE87E4832A0D086B00328B9F /* TrackCollectionCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -260,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE87E47E2A0CED2600328B9F /* TrackListViewModel.swift in Sources */,
 				DE086CAD2A0A4867005D3623 /* ViewController.swift in Sources */,
 				DE086CC42A0A49AB005D3623 /* GenreModel.swift in Sources */,
 				DE086CCA2A0A87CE005D3623 /* ArtistModel.swift in Sources */,
@@ -272,10 +291,14 @@
 				DE086CCF2A0AAE60005D3623 /* GenreListView.swift in Sources */,
 				DE086CAB2A0A4867005D3623 /* SceneDelegate.swift in Sources */,
 				DE086CC22A0A4993005D3623 /* ApiNetwork.swift in Sources */,
+				DE87E4822A0CFF2500328B9F /* TrackModel.swift in Sources */,
 				DEFA1A4F2A0BCD5B0068998C /* ArtistCollectionViewCell.swift in Sources */,
 				DEFA1A592A0C330C0068998C /* AlbumModel.swift in Sources */,
 				DEFA1A4D2A0BCB390068998C /* ArtistCollectionViewCellViewModel.swift in Sources */,
+				DE87E47A2A0CE7ED00328B9F /* TrackersViewController.swift in Sources */,
+				DE87E47C2A0CEC7400328B9F /* TrackListView.swift in Sources */,
 				DE086CD42A0AB09A005D3623 /* AnchorExtension.swift in Sources */,
+				DE87E4802A0CEF5D00328B9F /* TrackCollectionViewCell.swift in Sources */,
 				DEFA1A532A0C15C50068998C /* SingleArtistListView.swift in Sources */,
 				DE086CDC2A0AFDA4005D3623 /* ArtistsListViewModel.swift in Sources */,
 				DE086CC62A0A7D55005D3623 /* NetworkErrors.swift in Sources */,
@@ -283,6 +306,7 @@
 				DE086CCC2A0A8E76005D3623 /* NetworkPaths.swift in Sources */,
 				DE086CD82A0AE427005D3623 /* GenreCollectionViewCell.swift in Sources */,
 				DEFA1A572A0C2C240068998C /* SingleArtistCollectionViewCell.swift in Sources */,
+				DE87E4842A0D086B00328B9F /* TrackCollectionCellViewModel.swift in Sources */,
 				DE086CD62A0AD1B9005D3623 /* AddSubviews+Extension.swift in Sources */,
 				DE086CDE2A0AFF17005D3623 /* ArtistsViewController.swift in Sources */,
 			);

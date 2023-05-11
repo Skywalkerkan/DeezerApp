@@ -42,7 +42,7 @@ class ArtistsViewController: UIViewController, ArtistsListViewDelegate {
         
         
         
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         
         
     }
@@ -53,6 +53,7 @@ class ArtistsViewController: UIViewController, ArtistsListViewDelegate {
         VC.id = artist.id
         print(artist.name)
         VC.title = artist.name
+        
         navigationController?.pushViewController(VC, animated: true)
     }
 
