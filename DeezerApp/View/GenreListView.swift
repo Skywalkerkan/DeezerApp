@@ -10,7 +10,7 @@ import UIKit
 
 protocol GenreListViewDelegate: AnyObject{
     
-    func listViewGenre(genreView: GenreListView, genreID: Int)
+    func listViewGenre(genreView: GenreListView, genre: Genre)
 }
 
 
@@ -30,7 +30,6 @@ final class GenreListView: UIView{
         spinner.hidesWhenStopped = true
         spinner.color = .cyan
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        print("gir")
         return spinner
     }()
     
@@ -65,7 +64,6 @@ final class GenreListView: UIView{
         viewModel.fetchGenres()
         viewModel.delegate = self
         
-        print("girildi")
         collectionViewSetup()
        // collectionView.reloadData()
     }
@@ -119,8 +117,8 @@ final class GenreListView: UIView{
 
 
 extension GenreListView: GenreViewModelDelegate{
-    func didSelectGenre(genre: Int) {
-        delegate?.listViewGenre(genreView: self, genreID: genre)
+    func didSelectGenre(genre: Genre) {
+        delegate?.listViewGenre(genreView: self, genre: genre)
     }
     
     func didLoadInitialGenre() {

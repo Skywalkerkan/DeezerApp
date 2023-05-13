@@ -35,11 +35,10 @@ class ViewController: UIViewController, GenreListViewDelegate {
         
     }
     
-    func listViewGenre(genreView: GenreListView, genreID: Int) {
-        //Detail
-        //print(genreID)
+    func listViewGenre(genreView: GenreListView, genre: Genre) {
         let VC = ArtistsViewController()
-        VC.id = genreID
+        VC.id = genre.id
+        VC.title = genre.name
         
         self.navigationController?.pushViewController(VC, animated: true)
     }

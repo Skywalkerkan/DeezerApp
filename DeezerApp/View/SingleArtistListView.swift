@@ -21,16 +21,12 @@ final class SingleArtistListView: UIView{
     
     var imageURL: String?{
         didSet{
-           // print(imageURL)
             guard let imageURL = imageURL else{return}
             APICaller.shared.loadImage(from: imageURL) { data in
                 guard let data = data else{
                     return
                 }
-                print("Görselll")
-                print(data)
-                
-                print(imageURL)
+           
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: data)
                 }
@@ -68,8 +64,6 @@ final class SingleArtistListView: UIView{
     
     var byIDArtist: Int = 0{
         didSet{
-         //   print(byIDArtist)
-          //  print("Yukardaki")
             viewModel.fetchSingleArtist(artistID: byIDArtist)
             
         }

@@ -34,7 +34,6 @@ class SingleArtistCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Merhaba"
-        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         return label
     }()
@@ -69,7 +68,7 @@ class SingleArtistCollectionViewCell: UICollectionViewCell {
     
     func configure(viewModel: SingleCollectionCellViewModel){
         albumName.text = viewModel.albumName
-        
+        releaseDate.text = viewModel.relaseDate
         viewModel.fetchImage { [weak self] result in
             switch result{
             case .success(let data):

@@ -51,19 +51,18 @@ class BegenilerViewController: UIViewController, BegeniListViewDelegate {
                     let realm = try Realm()
                     let results = realm.objects(ObjectTrack.self)
                     for track in results {
-                        print(track.trackID)
                         tracks.append(track.trackID)
                     }
                 } catch let error {
                     print("Error retrieving track IDs: \(error.localizedDescription)")
                 }
-        print("öncesi")
-        print(tracks)
+     
+        
         DispatchQueue.main.async {
             self.begeniListView.trackIDS = self.tracks
 
         }
-        print("Viewcontroller içi \(tracks)")
+        
     }
     
     func listViewTrack(trackView: BegeniListView, track: TrackData) {
@@ -78,11 +77,11 @@ class BegenilerViewController: UIViewController, BegeniListViewDelegate {
         if player?.rate == 0
                 {
                     player!.play()
-            print("Çalıyor")
+            
                     //playButton!.setImage(UIImage(named: "player_control_pause_50px.png"), forState: UIControlState.Normal)
                 } else {
                     player!.pause()
-                    print("Çalmıyor")
+                    
                     //playButton!.setImage(UIImage(named: "player_control_play_50px.png"), forState: UIControlState.Normal)
                 }
     }

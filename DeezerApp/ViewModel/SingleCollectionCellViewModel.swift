@@ -18,14 +18,16 @@ final class SingleCollectionCellViewModel{
     let albumName: String
     let albumImage: URL?
     let albumID: Int
+    let relaseDate: String?
     
     
     
     
-    init(albumName: String, albumImage: URL, albumID: Int){
+    init(albumName: String, albumImage: URL, albumID: Int, releaseDate: String){
         self.albumName = albumName
         self.albumImage = albumImage
         self.albumID = albumID
+        self.relaseDate = releaseDate
         
     }
     

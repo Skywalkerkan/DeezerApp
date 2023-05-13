@@ -14,7 +14,7 @@ import AVFoundation
 class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var trackIDs = [Int]()
-
+    var notificationToken: NotificationToken?
     var isFilled = true
     let cellId = "cellId"
     
@@ -38,9 +38,14 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.dataSource = self
         navigationItem.title = "Beğeniler"
         collectionView.register(BegenilerCollectionViewCell.self, forCellWithReuseIdentifier: BegenilerCollectionViewCell.identifier)
+        
+        
+        notificationToken = realm.observe { [weak self] _, _ in
+                    self?.updateCollectionView() // Realm'de bir değişiklik olduğunda, koleksiyon görünümünü güncelleyin
+                }
                
                 
-        
+        print("Girdim")
         
         
         
@@ -53,6 +58,56 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
         ])
     }
     
+    var tracksIDS: [Int] = []
+    func updateCollectionView() {
+        self.tracksIDS.removeAll()
+        self.begeniler.removeAll()
+        do {
+            let realm = try Realm()
+            let results = realm.objects(ObjectTrack.self)
+            let data = Array(results) // Realm'den verileri alın ve diziye dönüştürün
+            // Koleksiyon görünümünde öğe var mı diye kontrol edin
+            guard data.count > 0 else {
+                return
+            }
+            
+            for data in data{
+               
+                tracksIDS.append(data.trackID)
+            } // Verileri koleksiyon görünümündeki veri dizisine atayın
+            print("trackcik")
+            print(tracksIDS)
+           //
+            APICaller.shared.fetchSingleTrack(trackID: tracksIDS) { result in
+                switch result{
+                case .success(let data):
+                    
+                    //print(data)
+                    self.begeniler.append(data)
+                    print(data.title)
+                case .failure(let error):
+                    print(error)
+                }
+                if self.begeniler.count == self.tracksIDS.count{
+                    print("son")
+                    print(self.begeniler.count)
+                 //   let trackDataArray = Array(self.begeniler)
+                   self.begeniler.sort { $0.title > $1.title }
+                  
+                  // let sortedTrackData = begeniler.sorted { $0.count < $1.count }
+                    DispatchQueue.main.async {
+                       // if self.pla
+                        self.player!.pause()
+                        self.collectionView.reloadData()
+                    }
+                }
+               
+            }
+            self.collectionView.reloadData() // Koleksiyon görünümünü yenileyin
+        } catch let error {
+            print("Error retrieving data: \(error.localizedDescription)")
+        }
+    }
     
     var tracksCopy: [TrackData]?
     
@@ -71,29 +126,30 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
                 } catch let error {
                     print("Error retrieving track IDs: \(error.localizedDescription)")
                 }
-            print(trackIDs)
+           // print(trackIDs)
         
                 
         APICaller.shared.fetchSingleTrack(trackID: trackIDs) { result in
             switch result{
             case .success(let data):
                 
-                print(data)
+                //print(data)
                 self.begeniler.append(data)
-                print(data.title)
+              //  print(data.title)
             case .failure(let error):
                 print(error)
             }
             if self.begeniler.count == self.trackIDs.count{
                 print("son")
-                print(self.begeniler.count)
+               // print(self.begeniler.count)
              //   let trackDataArray = Array(self.begeniler)
                self.begeniler.sort { $0.title > $1.title }
               
               // let sortedTrackData = begeniler.sorted { $0.count < $1.count }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.async {
                 
                     self.collectionView.reloadData()
+                   
                 }
             }
            
@@ -102,25 +158,33 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     
-    func collectionViewReload(Int: Int, begeniler: [TrackData]){
+    func collectionViewReload(Int: Int, begeniGelen: [TrackData]){
         
-      //  self.begeniler.removeAll()
-      //  self.trackIDs.removeAll()
-        print(Int)
+        /*self.begeniler.removeAll()
+        
         print(begeniler.count)
-        self.begeniler = begeniler
-       // print(begeniler[Int].title)
-        self.begeniler.remove(at: Int)
+        print(self.begeniler)
+       
+    
+            self.begeniler = begeniGelen
+            print("Silinecek begeni \(self.begeniler[Int].title)")
+            self.begeniler.remove(at: Int)
+        
+        
+
+        
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-        
-        }
-        for track in self.begeniler{
-            print(track.title)
-        }
+            for track in self.begeniler{
+                print(track.title)
+            }
+        }*/
+       
+       /* self.begeniler.removeAll()
+        self.trackIDs.removeAll()
         print("skfdsfasdf")
-       /* do {
+        do {
                     let realm = try Realm()
                     let results = realm.objects(ObjectTrack.self)
                     for track in results {
@@ -138,9 +202,13 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
             case .success(let data):
                // print(data.title)
                 self.begeniler.append(data)
+                print(self.begeniler)
             case .failure(let error):
                 print(error)
             }
+            print("SAYILAR")
+            print(self.trackIDs.count)
+            print(self.begeniler.count)
             if self.begeniler.count == self.trackIDs.count{
                 print(self.begeniler.count)
                 for track in self.begeniler{
@@ -148,6 +216,7 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
                 DispatchQueue.main.async {
                     print("yenileniyor")
+                    print(self.begeniler.count)
 
                     self.collectionView.reloadData()
                    
@@ -157,9 +226,12 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
             }
            
         }*/
-        print(begeniler.count)
-        print("yenile")
+     //   print(begeniler.count)
+      //  print("yenile")
     }
+    
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return begeniler.count
@@ -233,15 +305,15 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     
+    
+    
     @objc func begenClicked(){
         
         print("begeni basidli")
         
             isFilled.toggle()
         
-        /*let image = isFilled ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
-         tintColor = isFilled ? .systemPink : .systemGray*/
-           // print(begeniler[indexpath])
+      
         
         
         
@@ -252,19 +324,7 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
             
             print("ekle")
             
-            /*  let newObject = ObjectTrack()
-             newObject.trackID = trackID
-             
-             try! realm.write {
-             realm.add(newObject)
-             }
-             print("Basılı")
-             DispatchQueue.main.async {
-             self.delegatecik?.didLoadInitialTracks()
-             }
-             
-             tintColor = .systemPink*/
-            //collectionView.reloadData()
+           
         } else {
             /*image = UIImage(systemName: "heart")!
              

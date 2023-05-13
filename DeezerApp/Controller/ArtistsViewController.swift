@@ -33,7 +33,8 @@ class ArtistsViewController: UIViewController, ArtistsListViewDelegate {
         
         
         view.addSubview(ArtistListView)
-       // print(id)
+       
+        
   
         ArtistListView.byIDArtist = id
         
@@ -51,7 +52,6 @@ class ArtistsViewController: UIViewController, ArtistsListViewDelegate {
     func listViewArtists(artistView genreView: ArtistsListView, artist: SingleArtist) {
         let VC = SingleArtistViewController()
         VC.id = artist.id
-        print(artist.name)
         VC.title = artist.name
         
         navigationController?.pushViewController(VC, animated: true)

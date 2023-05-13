@@ -84,7 +84,7 @@ class APICaller{
             
         }
         
-        print(url)
+        
         AF.request(url).validate().responseDecodable(of: SingleArtist.self){ response in
             
             switch response.result{
@@ -113,7 +113,7 @@ class APICaller{
             
         }
         
-        print(url)
+        
         AF.request(url).validate().responseDecodable(of: Albums.self){ response in
             
             switch response.result{
@@ -141,7 +141,6 @@ class APICaller{
             
         }
         
-        print(url)
         AF.request(url).validate().responseDecodable(of: Tracks.self){ response in
             
             switch response.result{
@@ -172,7 +171,7 @@ class APICaller{
                 
             }
             
-            print(url)
+            
             AF.request(url).validate().responseDecodable(of: TrackData.self){ response in
                 
                 switch response.result{
@@ -199,7 +198,6 @@ class APICaller{
         AF.request(url).responseData { response in
             switch response.result {
             case .success(let data):
-                print(data)
                 completion(data)
             case .failure(let error):
                 print("Error loading image: \(error.localizedDescription)")

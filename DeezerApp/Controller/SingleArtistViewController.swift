@@ -30,7 +30,7 @@ class SingleArtistViewController: UIViewController, AlbumListViewDelegate {
     }
     
     func listViewAlbum(albumView artistView: SingleArtistListView, album: Album) {
-       // print(album.title)
+       
         let VC = TrackersViewController()
         VC.title = album.title
         VC.id = album.id

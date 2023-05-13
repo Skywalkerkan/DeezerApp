@@ -22,8 +22,6 @@ final class ArtistsListView: UIView{
     
     var byIDArtist: Int = 0{
         didSet{
-            print(byIDArtist)
-            print("Yukardaki")
             viewModel.fetchArtists(genreID: byIDArtist)
         }
     }

@@ -14,7 +14,7 @@ import UIKit
 protocol GenreViewModelDelegate: AnyObject {
     func didLoadInitialGenre()
     
-    func didSelectGenre(genre: Int)
+    func didSelectGenre(genre: Genre)
         
 }
 
@@ -65,21 +65,6 @@ final class GenreViewModel: NSObject{
 
     }
     
-   /* func fetchArtists(genreID: Int){
-        APICaller.shared.fetchArtists(genreID: genreID) { result in
-            switch result{
-            case .success(let artists):
-                print(artists)
-               // self.allArtists = artists.data
-                print("giiiiriiş")
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-        
-        
-    }*/
 
     
     
@@ -107,8 +92,9 @@ extension GenreViewModel: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedGenre = cellViewModels[indexPath.row].genreID
-        
+      // let selectedGenre = cellViewModels[indexPath.row].genreID
+        let selectedGenre = self.allGenres[indexPath.row]
+    
         
         delegate?.didSelectGenre(genre: selectedGenre)
         

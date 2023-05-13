@@ -56,11 +56,11 @@ class TrackersViewController: UIViewController, TrackListViewDelegate {
         if player?.rate == 0
                 {
                     player!.play()
-            print("Çalıyor")
+            
                     //playButton!.setImage(UIImage(named: "player_control_pause_50px.png"), forState: UIControlState.Normal)
                 } else {
                     player!.pause()
-                    print("Çalmıyor")
+                    
                     //playButton!.setImage(UIImage(named: "player_control_play_50px.png"), forState: UIControlState.Normal)
                 }
             }

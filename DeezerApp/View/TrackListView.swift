@@ -27,8 +27,7 @@ final class TrackListView: UIView{
     
     var byTrackID: Int = 0{
         didSet{
-            print(byTrackID)
-            print("TRACKID")
+         
             
             viewModel.fetchAllTracks(albumID: byTrackID)
             

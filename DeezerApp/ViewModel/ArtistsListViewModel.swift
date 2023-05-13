@@ -49,25 +49,7 @@ final class ArtistsListViewModel: NSObject{
         
     }
     
-  /*  var genrecik: Int = 0
-    
-    
-    var genreID: Int = 0{
-        didSet{
-            
-         //  print(genreID)
-           
-            
-            
-            
-            //self.delegate?.didLoadInitialArtist()
-            
-            
-          
-            
-            
-        }
-    }*/
+ 
 
     
     private var cellViewModels: [ArtistCollectionViewCellViewModel] = []

@@ -62,7 +62,7 @@ final class TrackListViewModel: NSObject{
         APICaller.shared.fetchTracks(albumID: albumID) { [weak self] result in
             switch result{
             case .success(let data):
-                print("girildi")
+               
                 self?.tracks = data.data
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialTracks()

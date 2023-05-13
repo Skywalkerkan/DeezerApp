@@ -35,7 +35,7 @@ final class SingleArtistViewModel: NSObject{
               
                 
               //  print(imageURL)
-                let viewModel = SingleCollectionCellViewModel(albumName: album.title, albumImage: imageURL, albumID: album.id)
+                let viewModel = SingleCollectionCellViewModel(albumName: album.title, albumImage: imageURL, albumID: album.id, releaseDate: album.releaseDate)
                 cellViewModels.append(viewModel)
                
                 
@@ -56,7 +56,7 @@ final class SingleArtistViewModel: NSObject{
             case .success(let data):
               //  print(data)
                 SingleArtistListView.shared.imageURL = data.pictureBig
-                print(data.pictureBig)
+              
                 self?.imageURL = data.pictureBig
                 
               //  print("fetchgirildi")

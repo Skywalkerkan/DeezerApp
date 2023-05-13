@@ -90,7 +90,7 @@ final class BegeniListViewModel: NSObject{
                    
                         self?.tracks = singleTrack
                     
-                    print("****")
+                   /* print("****")
                     if let tracks = self?.tracks {
                         for track in tracks {
                             print(track.title)
@@ -98,7 +98,7 @@ final class BegeniListViewModel: NSObject{
                     }
                     print("boş")
 
-                    print("****")
+                    print("****")*/
                     DispatchQueue.main.async {
                        // print("Data")
                         self?.delegate?.didLoadInitialTracks()

@@ -64,7 +64,7 @@ final class BegeniListView: UIView, BegeniListViewModelDelegate{
         super.init(frame: frame)
         
        // collectionView.backgroundColor = .red
-        print("Saçma girdi")
+        
         
         let objects = realm.objects(ObjectTrack.self)
 
