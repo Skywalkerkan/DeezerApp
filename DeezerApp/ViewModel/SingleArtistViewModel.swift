@@ -31,6 +31,9 @@ final class SingleArtistViewModel: NSObject{
                 guard let imageURL = URL(string: album.coverBig) else{
                     return
                 }
+                
+              
+                
               //  print(imageURL)
                 let viewModel = SingleCollectionCellViewModel(albumName: album.title, albumImage: imageURL, albumID: album.id)
                 cellViewModels.append(viewModel)
@@ -44,6 +47,7 @@ final class SingleArtistViewModel: NSObject{
     
     
     private var cellViewModels: [SingleCollectionCellViewModel] = []
+    var imageURL = ""
     
     func fetchSingleArtist(artistID: Int){
         
@@ -51,7 +55,11 @@ final class SingleArtistViewModel: NSObject{
             switch result{
             case .success(let data):
               //  print(data)
-                print("fetchgirildi")
+                SingleArtistListView.shared.imageURL = data.pictureBig
+                print(data.pictureBig)
+                self?.imageURL = data.pictureBig
+                
+              //  print("fetchgirildi")
             case .failure(let error):
                 print(error)
                 
@@ -62,7 +70,7 @@ final class SingleArtistViewModel: NSObject{
             switch result{
             case .success(let data):
                // print(data)
-                print("albumler")
+               // print("albumler")
                 self?.albums = data.data
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialArtist()
@@ -123,6 +131,23 @@ extension SingleArtistViewModel: UICollectionViewDelegate, UICollectionViewDataS
         let selectedItem = self.albums[indexPath.row]
         delegate?.didSelectAlbum(album: selectedItem)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerID", for: indexPath) as? MyHeaderFooterClass else{
+           fatalError("Unsupported")
+        }
+       // header.backgroundColor = .blue
+        header.fetchImage(imageURL: imageURL)
+         return header
+     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: collectionView.frame.width, height: 230)
+    }
+
+    
+    
+    
     
     
     

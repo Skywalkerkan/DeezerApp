@@ -17,7 +17,7 @@ protocol BegeniListViewDelegate: AnyObject{
 
 
 
-final class BegeniListView: UIView{
+final class BegeniListView: UIView, BegeniListViewModelDelegate{
     
     private let viewModel = BegeniListViewModel()
     public weak var delegate: BegeniListViewDelegate?
@@ -34,13 +34,27 @@ final class BegeniListView: UIView{
         return collectionView
     }()
     
+    var collectionReload = 0{
+        didSet{
+            DispatchQueue.main.async {
+                print("Yenilendi")
+                self.collectionView.reloadData()
+            }
+            
+        }
+    }
     
     var trackIDS: [Int] = []{
         
         didSet{
+            
+            self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
             DispatchQueue.main.async {
-                self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
-                print("sonu")
+              //  print("AAAAAAA")
+              //  print(self.trackIDS)
+              //  print("sonu")
+                self.collectionView.reloadData()
+                //self.trackIDS.removeAll()
             }
         }
         
@@ -49,13 +63,14 @@ final class BegeniListView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        collectionView.backgroundColor = .red
-        print("Napıyon")
+       // collectionView.backgroundColor = .red
+        print("Saçma girdi")
+        
         let objects = realm.objects(ObjectTrack.self)
 
         for object in objects {
            // print(object.trackID)
-            trackIDS.append(object.trackID)
+          //buuuu  trackIDS.append(object.trackID)
 
 
             guard let lastObject = objects.last else{
@@ -64,10 +79,10 @@ final class BegeniListView: UIView{
           //  print(lastObject.trackID)
           //  print(object.trackID)
             if lastObject.trackID == object.trackID{
-                print("gihopppaarildi")
-                print(trackIDS)
+              //  print("gihopppaarildi")
+              //  print(trackIDS)
                 
-                self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
+               //BUUUUU self.viewModel.fetchSingleTrack(trackID: self.trackIDS)
             }
           //  print("devamke")
             // veya print(object) şeklinde tüm objeyi yazdırabilirsiniz.
@@ -108,13 +123,20 @@ final class BegeniListView: UIView{
 }
 
 
-extension BegeniListView: BegeniListViewModelDelegate{
+extension BegeniListView: BegeniListViewModelDelegate2{
+    func didLoadTracks() {
+        print("Load edildi")
+        
+        collectionView.reloadData()
+    }
+    
     func didSelectTrack(track: TrackData) {
         delegate?.listViewTrack(trackView: self, track: track)
     }
     
     
     func didLoadInitialTracks() {
+        print("yenilendi collection")
         collectionView.reloadData()
     }
     

@@ -13,11 +13,13 @@ import UIKit
 
 protocol BegeniListViewModelDelegate: AnyObject {
     func didLoadInitialTracks()
+    func didLoadTracks()
     
     func didSelectTrack(track: TrackData)
   //  func didSelectAlbum(track: TrackData)
         
 }
+
 
 
 final class BegeniListViewModel: NSObject{
@@ -33,7 +35,14 @@ final class BegeniListViewModel: NSObject{
         
         
         didSet{
+            print("girildiiiiiiiiiii")
             for track in tracks{
+                print(track.title)
+            }
+            //cellViewModel.removeAll()
+            
+            for track in tracks{
+              //  print(tracks.count)
                 guard let md5Image = track.md5Image else{
                     return
                 }
@@ -42,10 +51,12 @@ final class BegeniListViewModel: NSObject{
                     return
                 }
              //   print(imageURL)
-               
+                print(track.title)
                 let viewModel = TrackCollectionCellViewModel(trackName: track.title, trackImage: imageURL, trackID: track.id, trackDuration: track.duration)
                cellViewModel.append(viewModel)
-                print(cellViewModel.count)
+              //  print(cellViewModel.count)
+               // print("Countsayısı")
+             //   print(cellViewModel.count)
                
                 
             }
@@ -55,50 +66,43 @@ final class BegeniListViewModel: NSObject{
     
     private var cellViewModel: [TrackCollectionCellViewModel] = []
     
-    var trackAsil: [TrackData] = [] {
-        
-        //  2e018122cb56986277102d2041a592c8/1000x1000-000000-80-0-0.jpg
-              
-              
-              didSet{
-                  for track in tracks{
-                      guard let md5Image = track.md5Image else{
-                          return
-                      }
-                      let url = imageURL + md5Image + "/500x500-000000-80-0-0.jpg"
-                      guard let imageURL = URL(string: url) else{
-                          return
-                      }
-                   //   print(imageURL)
-                     
-                      let viewModel = TrackCollectionCellViewModel(trackName: track.title, trackImage: imageURL, trackID: track.id, trackDuration: track.duration)
-                     cellViewModel.append(viewModel)
-                      print(cellViewModel.count)
-                     
-                      
-                  }
-              }
-          }
+
     
     var sayi = 0
     var singleTrack: [TrackData] = []
     func fetchSingleTrack(trackID: [Int]){
+        //self.tracks.removeAll()
+      //  singleTrack.removeAll()
         self.tracks.removeAll()
-        trackID.count
+        print("fetchsingle içi")
+        //print(trackID)
+        
         APICaller.shared.fetchSingleTrack(trackID: trackID) { [weak self] result in
             switch result{
             case .success(let data):
                 self?.singleTrack.append(data)
-                print(data.preview)
+               // print(data.preview)
                 self?.sayi += 1
                 if trackID.count == self?.sayi{
                     guard let singleTrack = self?.singleTrack else{
                         return
                     }
-                    self?.tracks = singleTrack
+                   
+                        self?.tracks = singleTrack
+                    
+                    print("****")
+                    if let tracks = self?.tracks {
+                        for track in tracks {
+                            print(track.title)
+                        }
+                    }
+                    print("boş")
+
+                    print("****")
                     DispatchQueue.main.async {
-                        print("Evet baba")
+                       // print("Data")
                         self?.delegate?.didLoadInitialTracks()
+                        
 
                     }
                 }
@@ -109,7 +113,7 @@ final class BegeniListViewModel: NSObject{
             }
      
         }
-        print("son")
+     //   print("son")
         
     }
     
@@ -123,7 +127,6 @@ final class BegeniListViewModel: NSObject{
 
 extension BegeniListViewModel: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(cellViewModel.count)
         return cellViewModel.count
     }
     

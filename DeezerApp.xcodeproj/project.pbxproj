@@ -28,6 +28,9 @@
 		DE086CDC2A0AFDA4005D3623 /* ArtistsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDB2A0AFDA4005D3623 /* ArtistsListViewModel.swift */; };
 		DE086CDE2A0AFF17005D3623 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */; };
 		DE086CE02A0AFF29005D3623 /* ArtistsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE086CDF2A0AFF29005D3623 /* ArtistsListView.swift */; };
+		DE8680E72A0E364B008CFEA1 /* BegeniYedekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8680E62A0E364B008CFEA1 /* BegeniYedekViewController.swift */; };
+		DE8680E92A0E867F008CFEA1 /* BegenilerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8680E82A0E867F008CFEA1 /* BegenilerCollectionViewCell.swift */; };
+		DE8680EB2A0EC095008CFEA1 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8680EA2A0EC095008CFEA1 /* Header.swift */; };
 		DE87E47A2A0CE7ED00328B9F /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */; };
 		DE87E47C2A0CEC7400328B9F /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47B2A0CEC7400328B9F /* TrackListView.swift */; };
 		DE87E47E2A0CED2600328B9F /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */; };
@@ -73,6 +76,9 @@
 		DE086CDB2A0AFDA4005D3623 /* ArtistsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsListViewModel.swift; sourceTree = "<group>"; };
 		DE086CDD2A0AFF17005D3623 /* ArtistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsViewController.swift; sourceTree = "<group>"; };
 		DE086CDF2A0AFF29005D3623 /* ArtistsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsListView.swift; sourceTree = "<group>"; };
+		DE8680E62A0E364B008CFEA1 /* BegeniYedekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegeniYedekViewController.swift; sourceTree = "<group>"; };
+		DE8680E82A0E867F008CFEA1 /* BegenilerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BegenilerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE8680EA2A0EC095008CFEA1 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DE87E4792A0CE7ED00328B9F /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
 		DE87E47B2A0CEC7400328B9F /* TrackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
 		DE87E47D2A0CED2600328B9F /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				DE086CC12A0A4993005D3623 /* ApiNetwork.swift */,
 				DE086CC52A0A7D55005D3623 /* NetworkErrors.swift */,
 				DE086CCB2A0A8E76005D3623 /* NetworkPaths.swift */,
+				DE8680E62A0E364B008CFEA1 /* BegeniYedekViewController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -176,6 +183,8 @@
 				DE87E47B2A0CEC7400328B9F /* TrackListView.swift */,
 				DE87E47F2A0CEF5D00328B9F /* TrackCollectionViewCell.swift */,
 				DE87E4932A0D3FDD00328B9F /* BegenilerListView.swift */,
+				DE8680E82A0E867F008CFEA1 /* BegenilerCollectionViewCell.swift */,
+				DE8680EA2A0EC095008CFEA1 /* Header.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8680EB2A0EC095008CFEA1 /* Header.swift in Sources */,
 				DE87E47E2A0CED2600328B9F /* TrackListViewModel.swift in Sources */,
 				DE87E4962A0D405100328B9F /* BegeniListViewModel.swift in Sources */,
 				DE086CAD2A0A4867005D3623 /* ViewController.swift in Sources */,
@@ -312,6 +322,7 @@
 				DE086CA92A0A4867005D3623 /* AppDelegate.swift in Sources */,
 				DE086CCF2A0AAE60005D3623 /* GenreListView.swift in Sources */,
 				DE086CAB2A0A4867005D3623 /* SceneDelegate.swift in Sources */,
+				DE8680E92A0E867F008CFEA1 /* BegenilerCollectionViewCell.swift in Sources */,
 				DE086CC22A0A4993005D3623 /* ApiNetwork.swift in Sources */,
 				DE87E4822A0CFF2500328B9F /* TrackModel.swift in Sources */,
 				DEFA1A4F2A0BCD5B0068998C /* ArtistCollectionViewCell.swift in Sources */,
@@ -322,6 +333,7 @@
 				DE086CD42A0AB09A005D3623 /* AnchorExtension.swift in Sources */,
 				DE87E4802A0CEF5D00328B9F /* TrackCollectionViewCell.swift in Sources */,
 				DEFA1A532A0C15C50068998C /* SingleArtistListView.swift in Sources */,
+				DE8680E72A0E364B008CFEA1 /* BegeniYedekViewController.swift in Sources */,
 				DE086CDC2A0AFDA4005D3623 /* ArtistsListViewModel.swift in Sources */,
 				DE086CC62A0A7D55005D3623 /* NetworkErrors.swift in Sources */,
 				DEFA1A5B2A0C3F5E0068998C /* SingleCollectionCellViewModel.swift in Sources */,

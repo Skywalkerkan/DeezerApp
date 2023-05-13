@@ -8,6 +8,7 @@
 import UIKit
 
 
+
 protocol AlbumListViewDelegate: AnyObject{
     
     func listViewAlbum(albumView: SingleArtistListView, album: Album)
@@ -18,6 +19,31 @@ protocol AlbumListViewDelegate: AnyObject{
 
 final class SingleArtistListView: UIView{
     
+    var imageURL: String?{
+        didSet{
+           // print(imageURL)
+            guard let imageURL = imageURL else{return}
+            APICaller.shared.loadImage(from: imageURL) { data in
+                guard let data = data else{
+                    return
+                }
+                print("Görselll")
+                print(data)
+                
+                print(imageURL)
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data)
+                }
+               
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    static let shared = SingleArtistListView()
     private let viewModel = SingleArtistViewModel()
     public weak var delegate: AlbumListViewDelegate?
     
@@ -26,12 +52,14 @@ final class SingleArtistListView: UIView{
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(SingleArtistCollectionViewCell.self, forCellWithReuseIdentifier: SingleArtistCollectionViewCell.identifier)
+        collectionView.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
+
         return collectionView
     }()
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .purple
         return imageView
@@ -40,8 +68,8 @@ final class SingleArtistListView: UIView{
     
     var byIDArtist: Int = 0{
         didSet{
-            print(byIDArtist)
-            print("Yukardaki")
+         //   print(byIDArtist)
+          //  print("Yukardaki")
             viewModel.fetchSingleArtist(artistID: byIDArtist)
             
         }
@@ -52,13 +80,13 @@ final class SingleArtistListView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(views: imageView, collectionView)
+        addSubviews(views: collectionView)
         viewModel.delegate = self
         
         
         addConstraints()
         collectionViewSetup()
-        backgroundColor = .gray
+        //backgroundColor = .gray
         
         
     }
@@ -70,8 +98,8 @@ final class SingleArtistListView: UIView{
     
     
     private func addConstraints(){
-        imageView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: nil, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 150)
-        collectionView.anchor(top: imageView.bottomAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
+       // imageView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: nil, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 200)
+        collectionView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
         
     }

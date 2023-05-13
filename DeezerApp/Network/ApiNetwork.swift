@@ -188,9 +188,25 @@ class APICaller{
         }
    
         
+  
+        
+        
         
     }
     
+    
+    func loadImage(from url: String, completion: @escaping (Data?) -> Void) {
+        AF.request(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                print(data)
+                completion(data)
+            case .failure(let error):
+                print("Error loading image: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+    }
     
     
     

@@ -8,11 +8,28 @@
 import UIKit
 import RealmSwift
 
+protocol BegeniListViewModelDelegate2: AnyObject {
+    func didLoadInitialTracks()
+    func didLoadTracks()
+    
+    func didSelectTrack(track: TrackData)
+  //  func didSelectAlbum(track: TrackData)
+        
+}
+
+
 
 class TrackCollectionViewCell: UICollectionViewCell {
+ 
+    
     
     var isFilled = false
     static let identifier = "TrackCollectionViewCell"
+    
+    private let viewModel = BegeniListViewModel()
+    public weak var delegate: BegeniListViewModelDelegate?
+    weak var delageteTrue: TrackListViewModelDelegate?
+    weak var delegatecik: BegeniListViewModelDelegate2?
     
     
     var trackID: Int?
@@ -36,6 +53,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     private let trackName: UILabel = {
        let label = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Olacaklar sensiz olsun"
         label.numberOfLines = 0
@@ -72,6 +90,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         /*let image = isFilled ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         tintColor = isFilled ? .systemPink : .systemGray*/
         
+       
         
         
         
@@ -90,8 +109,22 @@ class TrackCollectionViewCell: UICollectionViewCell {
             try! realm.write {
                 realm.add(newObject)
             }
+            print("Basılı")
+            DispatchQueue.main.async {
+                self.delegatecik?.didLoadInitialTracks()
+            }
+            do {
+                        let realm = try Realm()
+                        let results = realm.objects(ObjectTrack.self)
+                        for track in results {
+                            print(track.trackID)
+                        }
+                    } catch let error {
+                        print("Error retrieving track IDs: \(error.localizedDescription)")
+                    }
             
-
+            
+            
             tintColor = .systemPink
         } else {
             image = UIImage(systemName: "heart")!
@@ -105,6 +138,10 @@ class TrackCollectionViewCell: UICollectionViewCell {
             try! realm.write {
                 realm.delete(objectsToDelete)
             }
+            DispatchQueue.main.async {
+                self.delegatecik?.didLoadTracks()
+            }
+            
            
             print("Sil")
             
@@ -121,9 +158,9 @@ class TrackCollectionViewCell: UICollectionViewCell {
     }
     
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let realm = try! Realm()
         contentView.addSubviews(views: trackImage, trackName, trackTime,heartButton)
         
         trackImage.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 100, height: 0)
@@ -131,10 +168,12 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackName.anchor(top: contentView.topAnchor, bottom: nil, leading: trackImage.trailingAnchor, trailing: heartButton.leadingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 15, paddingRight: 0, width: 0, height: 30)
         trackTime.anchor(top: trackName.bottomAnchor, bottom: contentView.bottomAnchor, leading: trackImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingLeft: 5, paddingRight: 0, width: 0, height: 0)
         
-        print(trackID)
+       // print(trackID)
     
         
     }
+    
+    
     
     
     required init(coder: NSCoder) {
@@ -149,8 +188,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
         
         if let object = realm.objects(ObjectTrack.self).filter("trackID == %@", viewModel.trackID).first {
             isFilled.toggle()
-            print(object)
-            print("evet var")
+            //print(object)
+          //  print("evet var")
             image = UIImage(systemName: "heart.fill")!
             tintColor = .systemPink
             heartButton.setBackgroundImage(image, for: .normal)
@@ -174,6 +213,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     
 }
+
+
 
 
 

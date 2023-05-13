@@ -37,6 +37,14 @@ class TrackersViewController: UIViewController, TrackListViewDelegate {
 
         
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: true)
+  
+    }
+    
+   
+    
     
     func listViewTrack(trackView: TrackListView, track: TrackData) {
         

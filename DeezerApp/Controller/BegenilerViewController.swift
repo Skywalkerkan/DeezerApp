@@ -9,6 +9,7 @@ import UIKit
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
 
 class BegenilerViewController: UIViewController, BegeniListViewDelegate {
@@ -19,32 +20,56 @@ class BegenilerViewController: UIViewController, BegeniListViewDelegate {
     var playerItem:AVPlayerItem?
 
 
+
+
     let begeniListView = BegeniListView()
     var id: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        
-        begeniListView.delegate = self
-       // view.backgroundColor = .cyan
-        
-
+        title = "Beğeniler"
     
         view.addSubview(begeniListView)
         
         
         begeniListView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
-        begeniListView.backgroundColor = .red
-        
-        
+       // begeniListView.backgroundColor = .red
+     
 
         
     }
+    var tracks: [Int] = []
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        begeniListView.delegate = self
+        //begeniListView.collectionReload = 1
+        do {
+            tracks.removeAll()
+                    let realm = try Realm()
+                    let results = realm.objects(ObjectTrack.self)
+                    for track in results {
+                        print(track.trackID)
+                        tracks.append(track.trackID)
+                    }
+                } catch let error {
+                    print("Error retrieving track IDs: \(error.localizedDescription)")
+                }
+        print("öncesi")
+        print(tracks)
+        DispatchQueue.main.async {
+            self.begeniListView.trackIDS = self.tracks
+
+        }
+        print("Viewcontroller içi \(tracks)")
+    }
     
     func listViewTrack(trackView: BegeniListView, track: TrackData) {
+        
+    
+        
         guard let previewURL = URL(string: track.preview) else{
             return
         }
@@ -65,4 +90,6 @@ class BegenilerViewController: UIViewController, BegeniListViewDelegate {
     
  
     }
-    
+
+
+

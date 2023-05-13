@@ -75,6 +75,7 @@ final class TrackListView: UIView{
         
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
+        
     }
     
     
@@ -96,6 +97,7 @@ extension TrackListView: TrackListViewModelDelegate{
     
     func didLoadInitialTracks() {
         collectionView.reloadData()
+        print("Yenilendi ama yeni")
     }
     
     

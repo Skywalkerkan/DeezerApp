@@ -82,7 +82,7 @@ final class ArtistsListViewModel: NSObject{
             switch result{
             case .success(let artists):
                 //print(artists)
-                print(artists.data.first?.name)
+            //    print(artists.data.first?.name)
                 self?.allArtists = artists.data
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialArtist()
@@ -147,7 +147,7 @@ extension ArtistsListViewModel: UICollectionViewDataSource,UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedItem = allArtists[indexPath.row]
-        print(selectedItem.name)
+     //   print(selectedItem.name)
         delegate?.didSelectArtist(artist: selectedItem)
     }
     
