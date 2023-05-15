@@ -10,7 +10,7 @@ import Foundation
 
 class ObjectTrack: Object {
     @objc dynamic var trackID: Int = 0
-   // @objc dynamic var isLiked = false
+   
 }
 
 

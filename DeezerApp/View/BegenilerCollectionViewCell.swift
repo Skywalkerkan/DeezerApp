@@ -12,15 +12,15 @@ import Alamofire
 
 class BegenilerCollectionViewCell: UICollectionViewCell {
     
-    
-    var isFilled = false
+    let realm = try! Realm()
+   
     static let identifier = "TrackCollectionViewCell"
     
     private let trackImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .purple
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -60,38 +60,20 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
         
         
             print("sil")
-
+        let myViewController = BegeniYedekViewController()
+       
+        
             let objectsToDelete = realm.objects(ObjectTrack.self).filter("trackID == %@", trackID)
             
             try! realm.write {
                 realm.delete(objectsToDelete)
             }
         
-        
-        // Örneği alın
-            let myViewController = BegeniYedekViewController()
-            print(myViewController.begeniler)
- 
-            
-            
-         //   myViewController.collectionViewReload(Int: trackSira, begeniGelen: begeniler)
 
            
-
-        
-
-
-
-
+ 
             
-      /*  }else{
-            let imageHeart = UIImageView(image: UIImage(systemName: "heart.fill"))
-            print("ekle")
-            heartButton.setBackgroundImage(imageHeart.image?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), for: .normal)
-        }*/
-        
-        /*let image = isFilled ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
-        tintColor = isFilled ? .systemPink : .systemGray*/
+
         
     }
     
@@ -105,7 +87,7 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
         trackName.anchor(top: contentView.topAnchor, bottom: nil, leading: trackImage.trailingAnchor, trailing: heartButton.leadingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 15, paddingRight: 0, width: 0, height: 30)
         trackTime.anchor(top: trackName.bottomAnchor, bottom: contentView.bottomAnchor, leading: trackImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingLeft: 10, paddingRight: 0, width: 0, height: 0)
         
-       // print(trackID)
+     
     
         
     }
@@ -145,7 +127,12 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
     
     func configure(trackData: TrackData, trackSira: Int, begeniler: [TrackData]){
         self.trackName.text = trackData.title
-        self.trackID = trackData.id
+        
+        guard let trackID = trackData.id else{
+            return
+        }
+        
+        self.trackID = trackID
         self.trackSira = trackSira
         self.begeniler = begeniler
         self.image = trackData.md5Image!
@@ -154,7 +141,7 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
         var seconds = "\(trackData.duration%60)"
         if Int(seconds)! < 10{
             seconds = "0\(seconds)"
-            print(seconds)
+            
         }
         duration = "\(minute).\(seconds)"
         self.trackTime.text = duration

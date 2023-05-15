@@ -19,23 +19,7 @@ protocol AlbumListViewDelegate: AnyObject{
 
 final class SingleArtistListView: UIView{
     
-    var imageURL: String?{
-        didSet{
-            guard let imageURL = imageURL else{return}
-            APICaller.shared.loadImage(from: imageURL) { data in
-                guard let data = data else{
-                    return
-                }
-           
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
-                }
-               
-            }
-            
-            
-        }
-    }
+    
     
     
     
@@ -80,7 +64,6 @@ final class SingleArtistListView: UIView{
         
         addConstraints()
         collectionViewSetup()
-        //backgroundColor = .gray
         
         
     }
@@ -92,7 +75,7 @@ final class SingleArtistListView: UIView{
     
     
     private func addConstraints(){
-       // imageView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: nil, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 200)
+   
         collectionView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
         
         
@@ -124,9 +107,7 @@ extension SingleArtistListView: AlbumViewModelDelegate{
     }
     
     
-    /*func didSelectArtist(artist: SingleArtist) {
-        delegate?.listViewArtists(artistView: self, artist: artist)
-    }*/
+   
     
     func didLoadInitialArtist() {
         collectionView.reloadData()

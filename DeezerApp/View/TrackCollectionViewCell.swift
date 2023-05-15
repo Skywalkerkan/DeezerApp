@@ -13,7 +13,7 @@ protocol BegeniListViewModelDelegate2: AnyObject {
     func didLoadTracks()
     
     func didSelectTrack(track: TrackData)
-  //  func didSelectAlbum(track: TrackData)
+  
         
 }
 
@@ -26,8 +26,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     var isFilled = false
     static let identifier = "TrackCollectionViewCell"
     
-    private let viewModel = BegeniListViewModel()
-    public weak var delegate: BegeniListViewModelDelegate?
+   
     weak var delageteTrue: TrackListViewModelDelegate?
     weak var delegatecik: BegeniListViewModelDelegate2?
     
@@ -166,7 +165,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackName.anchor(top: contentView.topAnchor, bottom: nil, leading: trackImage.trailingAnchor, trailing: heartButton.leadingAnchor, paddingTop: 15, paddingBottom: 0, paddingLeft: 15, paddingRight: 0, width: 0, height: 30)
         trackTime.anchor(top: trackName.bottomAnchor, bottom: contentView.bottomAnchor, leading: trackImage.trailingAnchor, trailing: contentView.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingLeft: 10, paddingRight: 0, width: 0, height: 0)
         
-       // print(trackID)
+     
     
         
     }
@@ -189,7 +188,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         var seconds = "\(viewModel.trackDuration%60)"
         if Int(seconds)! < 10{
             seconds = "0\(seconds)"
-            print(seconds)
+            
         }
         duration = "\(minute).\(seconds)"
         self.trackTime.text = duration
@@ -197,12 +196,17 @@ class TrackCollectionViewCell: UICollectionViewCell {
         
         if let object = realm.objects(ObjectTrack.self).filter("trackID == %@", viewModel.trackID).first {
             isFilled.toggle()
-            //print(object)
-          //  print("evet var")
+            
             image = UIImage(systemName: "heart.fill")!
             tintColor = .systemPink
             heartButton.setBackgroundImage(image, for: .normal)
-           // isFilled.toggle()
+           
+        }
+        else{
+            image = UIImage(systemName: "heart")!
+            
+            heartButton.setBackgroundImage(image, for: .normal)
+            tintColor = .systemGray
         }
         
         viewModel.fetchImage { [weak self] result in

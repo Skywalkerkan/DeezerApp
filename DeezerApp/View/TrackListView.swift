@@ -16,7 +16,7 @@ protocol TrackListViewDelegate: AnyObject{
 }
 
 
-let realm = try! Realm()
+
 
 
 
@@ -49,20 +49,14 @@ final class TrackListView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let objects = realm.objects(ObjectTrack.self)
-
-        /*for object in objects {
-            print(object.trackID)
-            // veya print(object) şeklinde tüm objeyi yazdırabilirsiniz.
-        }
-        */
+       
         translatesAutoresizingMaskIntoConstraints = false
         
         viewModel.delegate = self
         addSubview(collectionView)
         
         collectionView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
-        
+         
         collectionViewSetup()
         
         
@@ -96,14 +90,11 @@ extension TrackListView: TrackListViewModelDelegate{
     
     func didLoadInitialTracks() {
         collectionView.reloadData()
-        print("Yenilendi ama yeni")
+      
     }
     
     
     
-    /*func didSelectArtist(artist: SingleArtist) {
-        delegate?.listViewArtists(artistView: self, artist: artist)
-    }*/
     
     
     

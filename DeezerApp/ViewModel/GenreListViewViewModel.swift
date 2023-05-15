@@ -33,7 +33,7 @@ final class GenreViewModel: NSObject{
                 guard let imageURL = URL(string: genres.picture_big) else{
                     return
                 }
-              //  print(imageURL)
+             
                 let viewModel = GenreCollectionViewCellViewModel(genreName: genres.name, genreImageURL: imageURL, genreID: genres.id)
                 cellViewModels.append(viewModel)
                 
@@ -53,7 +53,7 @@ final class GenreViewModel: NSObject{
             switch result{
             case .success(let GenreData):
                     self?.allGenres = GenreData.data
-                   // print(self?.allGenres)
+                   
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialGenre()
                 }
@@ -99,7 +99,7 @@ extension GenreViewModel: UICollectionViewDataSource, UICollectionViewDelegate, 
         delegate?.didSelectGenre(genre: selectedGenre)
         
  
-        //ArtistsListViewmo
+       
     }
     
     

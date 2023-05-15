@@ -40,11 +40,16 @@ final class TrackListViewModel: NSObject{
                 guard let imageURL = URL(string: url) else{
                     return
                 }
-             //   print(imageURL)
+                
+                
+                guard let trackID = track.id else{
+                    return
+                }
                
-                let viewModel = TrackCollectionCellViewModel(trackName: track.title, trackImage: imageURL, trackID: track.id, trackDuration: track.duration)
+                
+                let viewModel = TrackCollectionCellViewModel(trackName: track.title, trackImage: imageURL, trackID: trackID, trackDuration: track.duration)
                cellViewModel.append(viewModel)
-                //print(cellViewModel.count)
+                
                
                 
             }

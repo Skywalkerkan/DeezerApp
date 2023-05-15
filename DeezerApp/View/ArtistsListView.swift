@@ -44,9 +44,7 @@ final class ArtistsListView: UIView{
        
         collectionViewSetup()
         
-        //print(viewModel.genrecik)
-     //   print("listView\(viewModel.genrecik)")
-       // viewModel.fetchArtists()
+     
        
         
         

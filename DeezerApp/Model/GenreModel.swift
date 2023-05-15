@@ -23,7 +23,7 @@ struct Genre: Codable{
     let picture_medium: String
     let picture_big: String
     let picture_xl: String
-    let type: String
+    let type: String?
 }
 
 

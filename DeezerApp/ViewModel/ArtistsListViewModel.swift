@@ -11,11 +11,7 @@ import UIKit
 
 
 
-/*protocol ArtistViewModelDelegate: AnyObject{
-    
-    func didSelectGenre(genre: Int)
-    
-}*/
+
 
 
 protocol AritsViewModelDelegate: AnyObject {
@@ -38,7 +34,7 @@ final class ArtistsListViewModel: NSObject{
                 guard let imageURL = URL(string: artist.pictureBig) else{
                     return
                 }
-              //  print(imageURL)
+            
                 let viewModel = ArtistCollectionViewCellViewModel(artistName: artist.name, artistImage: imageURL, artistID: artist.id)
                 cellViewModels.append(viewModel)
                
@@ -58,13 +54,12 @@ final class ArtistsListViewModel: NSObject{
     
     func fetchArtists(genreID: Int){
         
-       // print(self.genreID)
+    
         APICaller.shared.fetchArtists(genreID: genreID) { [weak self] result in
-          //  print(self.genreID)
+      
             switch result{
             case .success(let artists):
-                //print(artists)
-            //    print(artists.data.first?.name)
+         
                 self?.allArtists = artists.data
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialArtist()
@@ -72,7 +67,6 @@ final class ArtistsListViewModel: NSObject{
                
                
 
-            //    print(self.allArtists)
             case .failure(let error):
                 print(error)
             }
@@ -129,7 +123,7 @@ extension ArtistsListViewModel: UICollectionViewDataSource,UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedItem = allArtists[indexPath.row]
-     //   print(selectedItem.name)
+
         delegate?.didSelectArtist(artist: selectedItem)
     }
     

@@ -24,12 +24,11 @@ class MyHeaderFooterClass: UICollectionReusableView {
     
  override init(frame: CGRect) {
     super.init(frame: frame)
-    //self.backgroundColor = UIColor.purple
-    // translatesAutoresizingMaskIntoConstraints = false
+   
      addSubview(imageView)
      imageView.anchor(top: safeAreaLayoutGuide.topAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
 
-    // Customize here
+  
 
  }
 
@@ -49,6 +48,7 @@ class MyHeaderFooterClass: UICollectionReusableView {
                 self.imageView.image = UIImage(data: imageData)
             case .failure(let error):
                // completion(.failure(error))
+                print(error.localizedDescription)
                 print("Error")
                 
             }

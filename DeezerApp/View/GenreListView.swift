@@ -13,16 +13,12 @@ protocol GenreListViewDelegate: AnyObject{
     func listViewGenre(genreView: GenreListView, genre: Genre)
 }
 
-
-
-
 final class GenreListView: UIView{
     
     
     public weak var delegate: GenreListViewDelegate?
     
     private let viewModel = GenreViewModel()
-    
     
     
     private let spinner: UIActivityIndicatorView = {
@@ -32,7 +28,6 @@ final class GenreListView: UIView{
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
-    
     
     
     
@@ -47,11 +42,6 @@ final class GenreListView: UIView{
     
     
 
-    
-    
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -96,16 +86,7 @@ final class GenreListView: UIView{
         
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.spinner.stopAnimating()
-            self.collectionView.isHidden = false
-            
-            UIView.animate(withDuration: 0.4) {
-                self.collectionView.alpha = 1
-            }
-            
-            
-        })
+ 
     }
     
     
@@ -123,6 +104,16 @@ extension GenreListView: GenreViewModelDelegate{
     
     func didLoadInitialGenre() {
         collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            self.collectionView.isHidden = false
+            
+            UIView.animate(withDuration: 0.4) {
+                self.collectionView.alpha = 1
+            }
+            
+            
+        }
     }
     
     

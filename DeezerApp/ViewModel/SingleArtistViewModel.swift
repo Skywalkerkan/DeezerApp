@@ -34,7 +34,7 @@ final class SingleArtistViewModel: NSObject{
                 
               
                 
-              //  print(imageURL)
+             
                 let viewModel = SingleCollectionCellViewModel(albumName: album.title, albumImage: imageURL, albumID: album.id, releaseDate: album.releaseDate)
                 cellViewModels.append(viewModel)
                
@@ -54,12 +54,11 @@ final class SingleArtistViewModel: NSObject{
         APICaller.shared.fetchSingleArtist(artistID: artistID) { [weak self] result in
             switch result{
             case .success(let data):
-              //  print(data)
-                SingleArtistListView.shared.imageURL = data.pictureBig
+              
               
                 self?.imageURL = data.pictureBig
                 
-              //  print("fetchgirildi")
+             
             case .failure(let error):
                 print(error)
                 
@@ -69,8 +68,7 @@ final class SingleArtistViewModel: NSObject{
         APICaller.shared.fetchAlbums(artistID: artistID) { [weak self] result in
             switch result{
             case .success(let data):
-               // print(data)
-               // print("albumler")
+               
                 self?.albums = data.data
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialArtist()
@@ -87,12 +85,6 @@ final class SingleArtistViewModel: NSObject{
         
         
     }
-    
-    
-    
-    
-    
-    
     
     
     
@@ -151,29 +143,6 @@ extension SingleArtistViewModel: UICollectionViewDelegate, UICollectionViewDataS
     
     
     
-    
-    
-    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        headerView.backgroundColor = .brown
-        let label = UILabel()
-        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.text = "Notification Times"
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .yellow
-
-        
-      //  tableView.sectionHeaderTopPadding = 0
-
-        headerView.addSubview(label)
-        
-        return headerView
-            
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }*/
     
     
     

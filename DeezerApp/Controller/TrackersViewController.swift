@@ -46,11 +46,13 @@ class TrackersViewController: UIViewController, TrackListViewDelegate {
    
     
     
+    
     func listViewTrack(trackView: TrackListView, track: TrackData) {
         
         guard let previewURL = URL(string: track.preview) else{
             return
         }
+        
         let playerItem:AVPlayerItem = AVPlayerItem(url: previewURL)
         self.player = AVPlayer(playerItem: playerItem)
         if player?.rate == 0

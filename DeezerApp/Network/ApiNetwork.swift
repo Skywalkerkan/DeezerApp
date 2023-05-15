@@ -12,11 +12,11 @@ class APICaller{
     
     static let shared = APICaller()
     
-    let urlGenre = "https://api.deezer.com/genre"
+    
     
     let baseURL = "https://api.deezer.com"
     
-//https://api.deezer.com/genre/152/artists
+
     
     func fetchGenres(urlString: String = APICaller.shared.baseURL, completion: @escaping (Result<Genres, NetworkError>) -> Void){
         
@@ -30,7 +30,7 @@ class APICaller{
         AF.request(url)
           .validate()
           .responseDecodable(of: Genres.self) { response in
-            // 4
+           
               switch response.result{
               case .success(let data):
                   completion(.success(data))
@@ -71,7 +71,6 @@ class APICaller{
         
     }
     
-    //https://api.deezer.com/artist/27
     
     func fetchSingleArtist(artistID: Int, completion: @escaping (Result<SingleArtist, NetworkError>) -> Void){
         

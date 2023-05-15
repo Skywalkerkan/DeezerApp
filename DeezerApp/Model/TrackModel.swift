@@ -7,21 +7,15 @@
 
 import Foundation
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
 
-
-// MARK: - Welcome
 struct Tracks: Codable {
     let data: [TrackData]
     let total: Int
 }
 
-// MARK: - Datum
+
 struct TrackData: Codable {
-    let id: Int
-    let readable: Bool
+    let id: Int?
     let title, titleShort, isrc: String
     let titleVersion: String?
     let link: String
@@ -34,7 +28,8 @@ struct TrackData: Codable {
     let type: DatumType
 
     enum CodingKeys: String, CodingKey {
-        case id, readable, title
+        case id
+        case title
         case titleShort = "title_short"
         case titleVersion = "title_version"
         case isrc, link, duration
