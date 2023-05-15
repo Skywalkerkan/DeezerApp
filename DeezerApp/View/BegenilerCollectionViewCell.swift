@@ -60,14 +60,15 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
         
         
             print("sil")
-        let myViewController = BegeniYedekViewController()
-       
-        
+    
+               
             let objectsToDelete = realm.objects(ObjectTrack.self).filter("trackID == %@", trackID)
             
             try! realm.write {
                 realm.delete(objectsToDelete)
             }
+        
+        
         
 
            
@@ -124,9 +125,12 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
     }
     
     
+    var begenilerCopy: [TrackData] = []
+    
     
     func configure(trackData: TrackData, trackSira: Int, begeniler: [TrackData]){
         self.trackName.text = trackData.title
+        begenilerCopy = begeniler
         
         guard let trackID = trackData.id else{
             return
@@ -136,9 +140,14 @@ class BegenilerCollectionViewCell: UICollectionViewCell {
         self.trackSira = trackSira
         self.begeniler = begeniler
         self.image = trackData.md5Image!
+        
+        guard let durationData = trackData.duration else{
+            return
+        }
+        
         var duration: String = ""
-        let minute = trackData.duration/60
-        var seconds = "\(trackData.duration%60)"
+        let minute = durationData/60
+        var seconds = "\(durationData%60)"
         if Int(seconds)! < 10{
             seconds = "0\(seconds)"
             

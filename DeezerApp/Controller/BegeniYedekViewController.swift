@@ -13,10 +13,12 @@ import AVFoundation
 
 class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    static let shared = BegeniYedekViewController()
+
+    
     let realm = try! Realm()
     var trackIDs = [Int]()
     var notificationToken: NotificationToken?
-    var isFilled = true
     let cellId = "cellId"
     
     var begeniler: [TrackData] = []
@@ -33,6 +35,11 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
         return collectionView
     }()
     
+
+    
+    
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -43,7 +50,7 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
     
         
         notificationToken = realm.observe { [weak self] _, _ in
-                    self?.updateCollectionView() 
+                    self?.updateCollectionView()
                 }
         
         
@@ -96,7 +103,7 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
             if self.begeniler.count == self.trackIDs.count{
                 print("son")
           
-               self.begeniler.sort { $0.title > $1.title }
+                self.begeniler.sort { $0.title ?? "MusicPlayer"  > $1.title ?? "Music"  }
               
            
                 DispatchQueue.main.async {
@@ -148,15 +155,16 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
                     
                 case .failure(let error):
                     print(error)
+                    self.collectionView.reloadData()
                 }
 
                 if self.begeniler.count == self.tracksIDS.count{
      
                     
                  //   let trackDataArray = Array(self.begeniler)
-                   self.begeniler.sort { $0.title > $1.title }
+                    self.begeniler.sort { $0.id ?? 0 > $1.id ?? 0 }
                   
-                  // let sortedTrackData = begeniler.sorted { $0.count < $1.count }
+                
                     DispatchQueue.main.async {
                        // if self.pla
                         
@@ -173,7 +181,7 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
                
             }
-            self.collectionView.reloadData() // Koleksiyon görünümünü yenileyin
+            self.collectionView.reloadData()
         } catch let error {
             print("Error retrieving data: \(error.localizedDescription)")
         }
@@ -213,7 +221,11 @@ class BegeniYedekViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let previewURL = URL(string: begeniler[indexPath.row].preview) else{
+        guard let previewBegeniler = begeniler[indexPath.row].preview else{
+            return
+        }
+        
+        guard let previewURL = URL(string: previewBegeniler) else{
             return
         }
         let playerItem:AVPlayerItem = AVPlayerItem(url: previewURL)

@@ -16,16 +16,17 @@ struct Tracks: Codable {
 
 struct TrackData: Codable {
     let id: Int?
-    let title, titleShort, isrc: String
+    let title: String?
+    let titleShort, isrc: String?
     let titleVersion: String?
-    let link: String
-    let duration, trackPosition, diskNumber, rank: Int
-    let explicitLyrics: Bool
-    let explicitContentLyrics, explicitContentCover: Int
-    let preview: String
+    let link: String?
+    let duration, trackPosition, diskNumber, rank: Int?
+    let explicitLyrics: Bool?
+    let explicitContentLyrics, explicitContentCover: Int?
+    let preview: String?
     let md5Image: String?
     let artist: Artist?
-    let type: DatumType
+    
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,7 +42,7 @@ struct TrackData: Codable {
         case explicitContentCover = "explicit_content_cover"
         case preview
         case md5Image = "md5_image"
-        case artist, type
+        case artist
     }
 }
 
@@ -56,6 +57,4 @@ struct Artist: Codable {
 
 
 
-enum DatumType: String, Codable {
-    case track = "track"
-}
+

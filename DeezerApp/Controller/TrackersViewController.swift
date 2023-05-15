@@ -43,13 +43,20 @@ class TrackersViewController: UIViewController, TrackListViewDelegate {
   
     }
     
+    
+    
    
     
     
     
     func listViewTrack(trackView: TrackListView, track: TrackData) {
         
-        guard let previewURL = URL(string: track.preview) else{
+        
+        guard let preview = track.preview else{
+            return
+        }
+        
+        guard let previewURL = URL(string: preview) else{
             return
         }
         

@@ -46,8 +46,16 @@ final class TrackListViewModel: NSObject{
                     return
                 }
                
+                guard let trackTitle = track.title else{
+                    return
+                }
                 
-                let viewModel = TrackCollectionCellViewModel(trackName: track.title, trackImage: imageURL, trackID: trackID, trackDuration: track.duration)
+                guard let duration = track.duration else{
+                    return
+                }
+                
+                
+                let viewModel = TrackCollectionCellViewModel(trackName: trackTitle, trackImage: imageURL, trackID: trackID, trackDuration: duration)
                cellViewModel.append(viewModel)
                 
                
