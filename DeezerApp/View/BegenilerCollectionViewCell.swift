@@ -12,6 +12,9 @@ import Alamofire
 
 class BegenilerCollectionViewCell: UICollectionViewCell {
     
+    
+    //
+    
     let realm = try! Realm()
    
     static let identifier = "TrackCollectionViewCell"

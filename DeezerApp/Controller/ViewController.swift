@@ -14,9 +14,7 @@ class ViewController: UIViewController, GenreListViewDelegate {
     
     private let genresListView = GenreListView()
     
-    var GenresData: [Genre] = []
-    var artistsData: [SingleArtist] = []
-    var singleArtist: SingleArtist?
+
     
     
     override func viewDidLoad() {
